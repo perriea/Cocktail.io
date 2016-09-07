@@ -45,14 +45,8 @@ module.exports = {
         var sillyName = [];
         var count = req.body.count;
 
-        for (var i = 0; i < count; i++) {
-            
+        for (var i = 0; i < count; i++)
             sillyName[i] = generateName();
-            
-        }
-        
-        
-        
 
         res.json({"error" : false, "data" : sillyName });
     }
