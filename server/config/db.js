@@ -2,7 +2,8 @@
 var Sequelize = require('sequelize');
 
 var sequelize = new Sequelize('cocktail_io', 'root', '', { 
-	host: 'localhost', 
+	host: 'localhost',
+	port: 3306,
 	dialect: 'mysql', 
 	pool: { 
 		max: 5, 

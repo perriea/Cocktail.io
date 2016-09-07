@@ -4,30 +4,13 @@ var bcrypt = require('bcrypt');
 var salt   = bcrypt.genSaltSync(10);
 
 var MUsers  = require("./models/users");
+var Generate = require("./controllers/generate");
 
 module.exports = function(app, passport) {
 
-	app.get('/api', function(req, res) 
-    {
-    	var newUser = {
-            username: "test",
-            lastname: "test",
-            firstname: "test",
-            email: "test",
-            sex: "M",
-            password: "test",
-            authenticate_type: 1,
-            token: "fdsfnjdsnfksd"
-        }
-        MUsers.TUsers.create(newUser).then(function() {
-            console.log("Project with id =1 updated successfully!");
-            res.json(200, { status: "OK" });
-        }).catch(function(e) {
-            console.log("Project update failed !");
-            res.json(200, { status: "Fail" });
-        });
-    });
-    
+	app.post('/api/generate/lorem', Generate.lorem);
+    app.post('/api/generate/password', Generate.password);
+
     // =====================================
     // AUTHENTIFICATION ====================
     // =====================================
