@@ -10,6 +10,7 @@ module.exports = function(app, passport) {
 
 	app.post('/api/generate/lorem', Generate.lorem);
     app.post('/api/generate/password', Generate.password);
+    app.post('/api/generate/username', Generate.username);
 
     // =====================================
     // AUTHENTIFICATION ====================
