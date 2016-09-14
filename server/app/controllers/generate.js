@@ -1,4 +1,3 @@
-var Couleurs   = require("couleurs");
 var FlatColors = require("flat-colors");
 var fs         = require("fs");
 
