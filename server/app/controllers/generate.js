@@ -1,9 +1,9 @@
-var Couleurs   = require("couleurs");
 var FlatColors = require("flat-colors");
 var fs         = require("fs");
 
 var loremIpsum = require('lorem-ipsum');
 var generator = require('generate-password');
+var generateName = require('sillyname');
 
 module.exports = {
 
@@ -37,6 +37,17 @@ module.exports = {
         });
 
         res.json({"error" : false, "data" : password });
+    },
+
+    // POST /api/generate/username
+    username: function (req, res, next) {
+        var sillyName = [];
+        var count = req.body.count;
+
+        for (var i = 0; i < count; i++)
+            sillyName[i] = generateName();
+
+        res.json({"error" : false, "data" : sillyName });
     }
 
 };
