@@ -1,0 +1,75 @@
+
+/**
+ * WHY USING VARIABLES ?
+ * 
+ * In regular CSS you would have repetition of color code, like "#FFFFFF" would have been wrote plenty of time
+ * With those variables, if you decide that "#FFFFFF" must become "#FFFEEE" it will be done by simple changing ONE
+ * value and trying to find all of those lines.
+ * 
+ *
+ * HOW TO USE THE COLOR ?
+ *
+ * Example : "color : #E32636" become "color : $color-alizarin-crimson" 
+ *
+ *
+ * HOW TO CAME UP WITH A NAME COLOR ?
+ *
+ * Start by naming the variable "$color-" and add the name that you find on this website:
+ * http://www.color-blindness.com/color-name-hue/
+ * Or simply use your imagination.
+ *
+ *
+ * CONTROLLING COLORS
+ *
+ * Examples :
+ * - "darken( $base-color, 10% )"
+ * - "lighten( $base-color, 10% )"
+ *
+ * - rgba( $color-alizarin-crimson, .7 )
+ *
+ *
+ */
+
+
+/*==========================================================================
+White
+========================================================================== */
+$colorWhite : #FFFFFF;
+$colorWhiteSmoke : #F2F2F2;
+
+
+/*==========================================================================
+Black
+========================================================================== */
+$colorBlack : #000000;
+
+
+/*==========================================================================
+Blue
+========================================================================== */
+$colorPortage : #9690DE;
+$colorCornFlower : #4C88F5;
+
+
+/*==========================================================================
+Orange
+========================================================================== */
+$colorCarrotOrange : #EF8115;
+
+
+/*==========================================================================
+Red
+========================================================================== */
+$colorFrenchRose : #F54C7C;
+
+
+/*==========================================================================
+Yellow
+========================================================================== */
+$colorEnergy : #F5D04C;
+
+
+/*==========================================================================
+Green
+========================================================================== */
+$colorCarrabean : #04BA9C;

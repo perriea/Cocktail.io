@@ -1,0 +1,24 @@
+/* ==========================================================================
+Pour des infos sur la structure :
+http://less.virgile-gouala.fr/
+La documentation n'est pas encore completement traduite, mais toutes
+les sources en bas de la page web.
+========================================================================== */
+
+
+// @import "_settings.blank.scss";
+@import "_settings.colors.scss";
+@import "_settings.fonts.scss";
+
+// @import "__tools.mixins.scss";
+// @import "__tools.blank.scss";
+
+@import "___generic.body.scss";
+
+// @import "____elements.blank.scss";
+
+// @import "_____objects.blank.scss"; 
+
+// @import "______components.blank.scss"; 
+ 
+// @import "_______trumps.blank.scss"; 
