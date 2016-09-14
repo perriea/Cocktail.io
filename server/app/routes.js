@@ -209,14 +209,10 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
+
     app.get('/admin', isAdminIn, function(req, res) {
         res.json({"error" : false, "session" : req.session.passport });
     });
-
-    app.get('/', function(req, res) {
-        res.render('index');
-    });
-
 
 
     // All routes not found => 404
