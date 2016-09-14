@@ -10,14 +10,11 @@ var passport       = require('passport');
 var expressSession = require('express-session');
 
 // configuration ===========================================
-    
-// config files
-//var db = require('./config/db');
 
-// set our port
+// PORT du serveur web
 var port = process.env.PORT || 3000; 
 
-// get all data/stuff of the body (POST) parameters
+// Recuperation des POST
 // parse application/json 
 app.use(bodyParser.json()); 
 
