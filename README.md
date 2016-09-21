@@ -32,10 +32,11 @@ npm install
 Avec un client MySQL (SequelPro, MySQL WorkBench etc...), créer une base ` cocktail_io `.
 
 Si vous avez des paramètres differents tel que un mot de passe, un utilisateur ou un port différent pour accéder à MySQL modifiez le dans fichier si dessous.
+Ne pas toucher ce qu'il y a dans pool pour le moment svp.
 
 ` /le_nom_de_votre_checkout/serveur/config/db.js `
 ```javascript
-// config/database.js
+// config/db.js
 var Sequelize = require('sequelize');
 
 var sequelize = new Sequelize('cocktail_io', 'root', '', { 
