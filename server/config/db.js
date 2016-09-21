@@ -1,4 +1,4 @@
-// config/database.js
+// config/db.js
 var Sequelize = require('sequelize');
 
 var sequelize = new Sequelize('cocktail_io', 'root', '', { 
