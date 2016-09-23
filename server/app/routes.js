@@ -117,6 +117,8 @@ module.exports = function(app, passport) {
      */
     app.post('/api/generate/username', Generate.username);
 
+    app.post('/api/generate/video', Generate.video);
+
     // =====================================
     // AUTHENTIFICATION ====================
     // =====================================
