@@ -58,3 +58,22 @@ module.exports = db;
 ```
 
 - Démarrer MySQL puis lancer le serveur avec la commande ` npm start `
+
+
+## APIDocJS
+
+### Installation
+
+Dans le terminal ou le cmd :
+```
+npm install apidoc -g
+```
+
+### Execution
+
+A la racine du projet :
+```
+apidoc -i ./ -o docs/ -f ".*\\.js$"
+```
+
+Cela créera un dossier ` docs `, ouvrez le puis affichez ` index.html ` sur n'importe quel navigateur Web.
