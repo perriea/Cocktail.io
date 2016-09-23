@@ -69,11 +69,6 @@ module.exports = function(app, passport) {
      *       "data": "proident do tempor amet nostrud ad nisi Lorem esse pariatur"
      *     }
      *
-     * @apiErrorExample {json} Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "error": "UserNotFound"
-     *     }
      */
     app.post('/api/generate/password', Generate.password);
 
@@ -109,13 +104,48 @@ module.exports = function(app, passport) {
      *       "data": "proident do tempor amet nostrud ad nisi Lorem esse pariatur"
      *     }
      *
-     * @apiErrorExample {json} Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "error": "UserNotFound"
-     *     }
      */
     app.post('/api/generate/username', Generate.username);
+
+    /**
+     * @api {post} /api/generate/video Génération un lien video
+     * @apiVersion 1.0.0
+     * @apiName GetGenerateVideo
+     * @apiGroup Generation
+     * @apiPermission none
+     * @apiSampleRequest http://localhost:3000/api/generate/video
+     *
+     * @apiParam {Boolean} autoplay Ajout de l'option autoplay, obligatoire.
+     * @apiParam {Number} height Ajout de la hauteur, obligatoire.
+     * @apiParam {Number} width Ajout de la largeur, obligatoire.
+     * @apiParam {String} src Liens vers la video, facultatif.
+     *
+     * @apiParamExample {json} Request-Example:
+     *     {
+     *       "autoplay": true,
+     *       "height": 400,
+     *       "width": 600,
+     *       "src": "http://mazwai.com/system/posts/videos/000/000/220/preview_mp4_3/the_valley-graham_uheslki.mp4"
+     *     }
+     *
+     * @apiSuccess {Boolean} error         Déclarer si une erreur est arrivée en cours d'execution.
+     * @apiSuccess {Object}  data          HTML généré.
+     *
+     * @apiSuccessExample {json} Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *      "error":false,
+     *      "data":"<video src='http://mazwai.com/system/posts/videos/000/000/220/preview_mp4_3/the_valley-graham_uheslki.mp4' width='300' height='400' controls autoplay>"
+     *     }
+     *
+     * @apiErrorExample {json} Error-Response:
+     *     HTTP/1.1 400 Bad Request
+     *     {
+     *       "error":true,
+     *       "data":false
+     *     }
+     */
+    app.post('/api/generate/video', Generate.video);
 
     // =====================================
     // AUTHENTIFICATION ====================
