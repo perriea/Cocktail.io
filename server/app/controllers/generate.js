@@ -1,5 +1,5 @@
-var FlatColors = require("flat-colors");
-var fs         = require("fs");
+//var FlatColors = require("flat-colors");
+//var fs         = require("fs");
 
 var loremIpsum = require('lorem-ipsum');
 var generator = require('generate-password');
@@ -9,7 +9,7 @@ var validator = require('validator');
 module.exports = {
 
     // GET /api/generate/lorem
-    lorem: function(req, res, next)
+    lorem: function(req, res)
     {
         var count = req.query.count;
         var paragraphs = req.query.paragraphs;
@@ -31,11 +31,20 @@ module.exports = {
     },
 
     // GET /api/generate/password
-    password: function (req, res, next) {
+    password: function (req, res) {
         var count = req.query.count; // int
-        var numbers = req.query.numbers; // bool
-        var symbols = req.query.symbols; // bool
-        var uppercase = req.query.uppercase; //bool
+        var numbers = false;
+        var symbols = false;
+        var uppercase = false;
+
+        if (typeof req.query.numbers !== 'undefined' && req.query.numbers == 1)
+            numbers = true;
+
+        if (typeof req.query.symbols !== 'undefined' && req.query.symbols == 1)
+            symbols = true;
+
+        if (typeof req.query.uppercase !== 'undefined' && req.query.uppercase == 1)
+            uppercase = true;
 
         var password = generator.generate({
             length: count,
@@ -48,7 +57,7 @@ module.exports = {
     },
 
     // GET /api/generate/username
-    username: function (req, res, next) {
+    username: function (req, res) {
         var sillyName = [];
         var count = req.query.count;
         var strings = "";
@@ -67,18 +76,17 @@ module.exports = {
     },
 
     // POST /api/generate/video
-    video: function (req, res, next) {
-        var autoplay = req.body.autoplay; // bool
-        var height = req.body.height; // int
-        var width = req.body.width; // int
-        var src = req.body.src; // string
+    video: function (req, res) {
+        var autoplay = req.body.autoplay;
+        var height = req.body.height;
+        var width = req.body.width;
+        var src = req.body.src;
         var autoplay_string = "";
         var html = "";
 
         if (typeof height !== 'undefined' && typeof width !== 'undefined'
             && typeof autoplay !== 'undefined')
         {
-            console.log(autoplay);
             if (validator.isInt(height) && validator.isInt(width)
                 && validator.isBoolean(autoplay))
             {
