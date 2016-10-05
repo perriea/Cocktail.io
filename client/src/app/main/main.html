@@ -1,54 +1,17 @@
+<div>
 
-  <md-content>
-    <header>
-      <my-navbar></my-navbar>
-    </header>
+  <header>
+    <my-navbar></my-navbar>
+  </header>
 
-    <section class="jumbotron">
-      <h1>'Allo, 'Allo!</h1>
-      <p class="lead">
-        <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-        Always a pleasure scaffolding your apps.
-      </p>
-    </section>
+  <main class="grid">
+    <figure class="effect-oscar" ng-repeat="categorie in ::main.categories">
+      <figcaption>
+        <h2>{{ ::categorie.title }}<span>{{ ::categorie.subtitle }}</span></h2>
+        <p>{{ ::categorie.text} }</p>
+        <a href="{{ ::categorie.link }}">View more</a>
+      </figcaption>     
+    </figure>
+  </main>
 
-  </md-content>
-
-<!-- Je sais pas ce que tu voulais faire virgile mais c'est beaucoup mieux ici -->
-<!-- Car du coup casser les injections gulp c'est mal -->
-<!--
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>SASS - BEM - Grunt - Bower</title>
-
-  <link rel="stylesheet" type="text/css" media="all" href="assets/css/main.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-</head>
-<body>
-
-<header>
-  <h1><a href="">Cocktail<span>.io</span></a></h1>
-  <nav>
-    <ul>
-      <li>
-        <a href="" class="highlight">Connexion</a>
-      </li>
-      <li>
-        <a href="">Inscription</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-  <div class="category"></div>  
-  <div class="category"></div>  
-  <div class="category"></div>  
-  <div class="category"></div>  
-  <div class="category"></div>  
-  <div class="category"></div>  
-</main>
-
-</body>
-</html> -->
+</div>
