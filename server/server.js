@@ -1,5 +1,6 @@
 var express        = require('express');
 var app            = express();
+
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var cookieParser   = require('cookie-parser');
@@ -12,7 +13,7 @@ var expressSession = require('express-session');
 
 // configuration ===========================================
 
-// PORT du serveur web
+// PORT du serveur web : 9002
 var port = process.env.PORT || 9002;
 
 // Recuperation des POST
@@ -23,14 +24,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cookieParser()); // read cookies (needed for auth)
+// read cookies (needed for auth)
+app.use(cookieParser());
 
 // accept cross domain
 app.use(cors());
-
-app.set('view engine', 'ejs');
 
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override')); 
@@ -38,7 +38,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // auth
 // init de session Passport
 app.use(expressSession({
-	secret: 'passportcestdelamerde',
+	secret: 'utkgE45dg649SB55WJaJ',
 	resave: true,
     saveUninitialized: true
 }));
@@ -54,11 +54,11 @@ require('./app/routes')(app, passport); // configure our routes
 require('./config/passport')(passport);
 
 // start app ===============================================
-// startup our app at http://localhost:8080
+// startup our app at http://localhost:9002
 app.listen(port);               
 
 // shoutout to the user                     
-console.log('Magic happens on port ' + port);
+console.log('Port du serveur : ' + port);
 
 // expose app           
 exports = module.exports = app;

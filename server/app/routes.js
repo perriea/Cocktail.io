@@ -16,21 +16,17 @@ module.exports = function(app, passport) {
      * @apiSampleRequest http://localhost:3000/api/generate/lorem
      *
      * @apiParam {Number} count Nombre de mots à générer.
-     *
-     * @apiParamExample {json} Request-Example:
-     *     {
-     *       "count": 20
-     *     }
+     * @apiParam {String} paragraphs Nombre de paragraphes.
      *
      * @apiSuccess {Boolean} error         Déclarer si une erreur est arrivée en cours d'execution.
      * @apiSuccess {Object}  data          Données générées
-     * @apiSuccess {String}  data.word   Mots générés.
+     * @apiSuccess {String}  data.word     String generee
      *
      * @apiSuccessExample {json} Success-Response:
      *     HTTP/1.1 200 OK
      *     {
      *       "error": false,
-     *       "data": "proident do tempor amet nostrud ad nisi Lorem esse pariatur"
+     *       "data": "<p>proident do tempor amet nostrud ad nisi Lorem esse pariatur.</p>"
      *     }
      *
      */
@@ -48,14 +44,6 @@ module.exports = function(app, passport) {
      * @apiParam {Boolean} numbers Intégration des nombres.
      * @apiParam {Boolean} symbols Intégration des symboles.
      * @apiParam {Boolean} uppercase Intégration des majuscules.
-     *
-     * @apiParamExample {json} Request-Example:
-     *     {
-     *       "count": 20,
-     *       "numbers": true,
-     *       "symbols": false,
-     *       "uppercase": true
-     *     }
      *
      * @apiSuccess {Boolean} error         Déclarer si une erreur est arrivée en cours d'execution.
      * @apiSuccess {Object}  data          Données générées
@@ -83,14 +71,6 @@ module.exports = function(app, passport) {
      * @apiParam {Boolean} numbers Intégration des nombres.
      * @apiParam {Boolean} symbols Intégration des symboles.
      * @apiParam {Boolean} uppercase Intégration des majuscules.
-     *
-     * @apiParamExample {json} Request-Example:
-     *     {
-     *       "count": 20,
-     *       "numbers": true,
-     *       "symbols": false,
-     *       "uppercase": true
-     *     }
      *
      * @apiSuccess {Boolean} error         Déclarer si une erreur est arrivée en cours d'execution.
      * @apiSuccess {Object}  data          Données générées
