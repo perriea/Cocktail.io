@@ -8,27 +8,34 @@ var validator = require('validator');
 
 module.exports = {
 
-    // POST /api/generate/lorem
+    // GET /api/generate/lorem
     lorem: function(req, res, next)
     {
-        var count = req.body.count;
+        var count = req.query.count;
+        var paragraphs = req.query.paragraphs;
+        var output = [];
 
-        output = loremIpsum({
-            count: count,
-            units: 'word',
-            format: 'plain',
-            random: Math.random
-        });
+        for (var i = 0; i < paragraphs; i++)
+        {
+            var lorem = loremIpsum({
+                count: count,
+                units: 'words',
+                format: 'html',
+                random: Math.random
+            });
+
+            output += "<p>" + lorem + "</p>";
+        }
 
         res.status(200).json({"error" : false, "data" : output });
     },
 
-    // POST /api/generate/password
+    // GET /api/generate/password
     password: function (req, res, next) {
-        var count = req.body.count; // int
-        var numbers = req.body.numbers; // bool
-        var symbols = req.body.symbols; // bool
-        var uppercase = req.body.uppercase; //bool
+        var count = req.query.count; // int
+        var numbers = req.query.numbers; // bool
+        var symbols = req.query.symbols; // bool
+        var uppercase = req.query.uppercase; //bool
 
         var password = generator.generate({
             length: count,
@@ -40,13 +47,21 @@ module.exports = {
         res.status(200).json({"error" : false, "data" : password });
     },
 
-    // POST /api/generate/username
+    // GET /api/generate/username
     username: function (req, res, next) {
         var sillyName = [];
-        var count = req.body.count;
+        var count = req.query.count;
+        var strings = "";
+        var output = [];
 
         for (var i = 0; i < count; i++)
-            sillyName[i] = generateName();
+        {
+            strings = "";
+
+            strings = generateName();
+            output = strings.split(' ');
+            sillyName[i] = output[0];
+        }
 
         res.status(200).json({"error" : false, "data" : sillyName });
     },

@@ -1,7 +1,6 @@
 // chiffrement mot de passe
 var sequelize = require('sequelize');
 var bcrypt = require('bcrypt');
-var salt   = bcrypt.genSaltSync(10);
 
 var MUsers  = require("./models/users");
 var Generate = require("./controllers/generate");
@@ -9,7 +8,7 @@ var Generate = require("./controllers/generate");
 module.exports = function(app, passport) {
 
     /**
-     * @api {post} /api/generate/lorem Génération de lorem Ipsum
+     * @api {get} /api/generate/lorem Génération de lorem Ipsum
      * @apiVersion 1.0.0
      * @apiName GetGenerateLorem
      * @apiGroup Generation
@@ -35,10 +34,10 @@ module.exports = function(app, passport) {
      *     }
      *
      */
-	app.post('/api/generate/lorem', Generate.lorem);
+	app.get('/api/generate/lorem', Generate.lorem);
 
     /**
-     * @api {post} /api/generate/password Génération de mot de passe
+     * @api {get} /api/generate/password Génération de mot de passe
      * @apiVersion 1.0.0
      * @apiName GetGeneratePassword
      * @apiGroup Generation
@@ -70,10 +69,10 @@ module.exports = function(app, passport) {
      *     }
      *
      */
-    app.post('/api/generate/password', Generate.password);
+    app.get('/api/generate/password', Generate.password);
 
     /**
-     * @api {post} /api/generate/username Génération des pseudos
+     * @api {get} /api/generate/username Génération des pseudos
      * @apiVersion 1.0.0
      * @apiName GetGenerateUsername
      * @apiGroup Generation
@@ -105,7 +104,7 @@ module.exports = function(app, passport) {
      *     }
      *
      */
-    app.post('/api/generate/username', Generate.username);
+    app.get('/api/generate/username', Generate.username);
 
     /**
      * @api {post} /api/generate/video Génération un lien video
