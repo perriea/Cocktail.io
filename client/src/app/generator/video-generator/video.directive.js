@@ -23,7 +23,10 @@
     function VideoController(Generator) {
       var vm         = this;
       vm.loading     = false;
-      vm.minutes     = 2;
+      vm.autoplay    = false;
+      vm.height      = 400;
+      vm.width       = 400;
+      vm.src         = '';
 
       vm.sendRequest = sendRequest;
 
@@ -33,16 +36,17 @@
         }
         vm.loading = true;
 
-        console.log(vm.minutes);
 
-        // Generator
-        // .query({
-        //   minutes:      vm.minutes,
-        //   paragraphes:  vm.paragraphes
-        // }).$promise
-        // .then(callBackSuccess)
-        // ["catch"](callsBackError)
-        // ["finally"](callBackFinally);
+        Generator
+        .getVideo({
+          autoplay: 'vm.autoplay',
+          height:   'vm.height',
+          width:    'vm.width',
+          src:      'vm.src'
+        }).$promise
+        .then(callBackSuccess)
+        ["catch"](callsBackError)
+        ["finally"](callBackFinally);
 
         /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
         .then(callBackSuccess, callsBackError); */

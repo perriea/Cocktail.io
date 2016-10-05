@@ -29,21 +29,21 @@
       vm.sendRequest = sendRequest;
 
       function sendRequest() {
-        if ($scope.loading === true) {
+        if (vm.loading === true) {
           return ;
         }
         vm.loading = true;
         console.log(vm.caracters);
         console.log(vm.paragraphes);
 
-        // Generator
-        // .query({
-        //   caracters:    vm.caracters,
-        //   paragraphes:  vm.paragraphes
-        // }).$promise
-        // .then(callBackSuccess)
-        // ["catch"](callsBackError)
-        // ["finally"](callBackFinally);
+        Generator
+        .getText({
+          count:    vm.caracters
+        }).$promise
+        .then(callBackSuccess)
+        ["catch"](callBackError)
+        ["finally"](callBackFinally);
+
       }
 
       function callBackSuccess (result) {
