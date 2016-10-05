@@ -5,6 +5,7 @@ var methodOverride = require('method-override');
 var cookieParser   = require('cookie-parser');
 var sequelize      = require('sequelize');
 var flash          = require('req-flash');
+var cors           = require('cors');
 
 var passport       = require('passport');
 var expressSession = require('express-session');
@@ -12,7 +13,7 @@ var expressSession = require('express-session');
 // configuration ===========================================
 
 // PORT du serveur web
-var port = process.env.PORT || 3000; 
+var port = process.env.PORT || 9002;
 
 // Recuperation des POST
 // parse application/json 
@@ -25,6 +26,9 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use(cookieParser()); // read cookies (needed for auth)
+
+// accept cross domain
+app.use(cors());
 
 app.set('view engine', 'ejs');
 
