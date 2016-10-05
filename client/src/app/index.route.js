@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('cocktail.io')
     .config(routerConfig);
 
   /** @ngInject */
@@ -13,7 +13,14 @@
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
-      });
+      })
+      .state('generator', {
+        url: '/generator',
+        templateUrl: 'app/generator/generator.html',
+        controller: 'GeneratorController',
+        controllerAs: 'generator'
+      })
+      ;
 
     $urlRouterProvider.otherwise('/');
   }

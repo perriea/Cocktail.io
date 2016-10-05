@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('client');
+    .module('cocktail.io');
 
 })();

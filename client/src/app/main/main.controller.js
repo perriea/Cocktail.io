@@ -2,12 +2,44 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('cocktail.io')
     .controller('MainController', MainController);
 
   /** @ngInject */
   function MainController() {
     var vm = this;
 
+    vm.categories = [
+        {
+            title:      '',
+            subtitle:   'CONTENU',
+            text:       'Oscar is a decent man. He used to clean porches with pleasure',
+            link:       '#/generator'
+        },
+        {
+            title:      '',
+            subtitle:   'CONTENU',
+            text:       'Oscar is a decent man. He used to clean porches with pleasure',
+            link:       '#/generator'
+        },
+        {
+            title:      '',
+            subtitle:   'CONTENU',
+            text:       'Oscar is a decent man. He used to clean porches with pleasure',
+            link:       '#/generator'
+        },
+        {
+            title:      '',
+            subtitle:   'CONTENU',
+            text:       'Oscar is a decent man. He used to clean porches with pleasure',
+            link:       '#/generator'
+        },
+        {
+            title:      '',
+            subtitle:   'CONTENU',
+            text:       'Oscar is a decent man. He used to clean porches with pleasure',
+            link:       '#/generator'
+        }
+    ];
   }
 })();

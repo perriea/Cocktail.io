@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('cocktail.io')
     .directive('myNavbar', myNavbar);
 
   /** @ngInject */

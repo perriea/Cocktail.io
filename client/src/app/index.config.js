@@ -2,13 +2,14 @@
   'use strict';
 
   angular
-    .module('client')
+    .module('cocktail.io')
     .config(config);
 
   /** @ngInject */
   function config($logProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
+
   }
 
 })();

@@ -1,0 +1,18 @@
+<div>
+
+    <header>
+        <my-navbar></my-navbar>
+    </header>
+
+    <main>
+        <section class="select-subcategory">
+            <button class="subcategory" ng-click="generator.type = 'text'">texte</button>
+            <button class="subcategory" ng-click="generator.type = 'video'">vidéo</button>
+        </section>
+
+        <text-generator ng-show="generator.type === 'text'"></text-generator>
+        <video-generator ng-show="generator.type === 'video'"></video-generator>
+
+    </main>
+
+</div>
