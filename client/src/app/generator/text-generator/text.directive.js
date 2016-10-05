@@ -20,19 +20,30 @@
     return directive;
 
     /** @ngInject */
-    function TextController($http) {
+    function TextController(Generator) {
       var vm         = this;
+      vm.loading     = false;
       vm.caracters   = 30;
       vm.paragraphes = 2;
 
       vm.sendRequest = sendRequest;
 
       function sendRequest() {
+        if ($scope.loading === true) {
+          return ;
+        }
+        vm.loading = true;
         console.log(vm.caracters);
         console.log(vm.paragraphes);
-        console.log("someurl/?caracters#{vm.caracters}");
-        /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
-        .then(callBackSuccess, callsBackError); */
+
+        // Generator
+        // .query({
+        //   caracters:    vm.caracters,
+        //   paragraphes:  vm.paragraphes
+        // }).$promise
+        // .then(callBackSuccess)
+        // ["catch"](callsBackError)
+        // ["finally"](callBackFinally);
       }
 
       function callBackSuccess (result) {
@@ -40,6 +51,10 @@
       }
       function callBackError (error) {
         console.log(error);
+      }
+
+      function callBackFinally () {
+        vm.loading = false;
       }
     }
   }
