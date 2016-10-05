@@ -24,12 +24,12 @@ var TUsers = access.define('c_users', {
 			isAlphanumeric: true
 		}
   	},
-  	sex: {
+  	gender: {
   		type: access.Sequelize.STRING(1),
       	allowNull: false
   	},
   	email: {
-      	type: access.Sequelize.STRING(100),
+      	type: access.Sequelize.STRING(200),
       	allowNull: true,
       	unique: true,
         validate: {
