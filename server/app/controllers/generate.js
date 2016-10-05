@@ -1,6 +1,3 @@
-//var FlatColors = require("flat-colors");
-//var fs         = require("fs");
-
 var loremIpsum = require('lorem-ipsum');
 var generator = require('generate-password');
 var generateName = require('sillyname');
