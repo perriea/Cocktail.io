@@ -17,7 +17,7 @@
     				count: '@count'
     			}
     		},
-            getVideo = {
+            getVideo: {
                 url:     url + '/video',
                 isArray: false,
                 params: {

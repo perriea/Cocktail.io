@@ -4,6 +4,6 @@
 
   angular
     .module('cocktail.io')
-    .constant('api_url', "http://localhost:3001");
+    .constant('api_url', "http://localhost:9002");
 
 })();
