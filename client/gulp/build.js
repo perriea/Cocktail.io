@@ -71,7 +71,10 @@ gulp.task('html', ['inject', 'partials'], function () {
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
 gulp.task('fonts', function () {
-  return gulp.src([$.mainBowerFiles().concat('bower_components/font-awesome/fonts/*')])
+  return gulp.src([
+      path.join(conf.paths.src, '/app/**/*'),
+      path.join('bower_components/font-awesome/fonts/*')
+    ])
     .pipe($.filter('**/*.{eot,otf,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));

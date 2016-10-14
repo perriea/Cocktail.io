@@ -1,12 +1,14 @@
+
+
 @font-face {
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'feathericons';
-	src:url('../fonts/feathericons/feathericons.eot?-8is7zf');
-	src:url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
-		url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
-		url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
-		url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
+	src:url('../fonts/feathericons.eot?-8is7zf');
+	src:url('../fonts/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
+		url('../fonts/feathericons.woff?-8is7zf') format('woff'),
+		url('../fonts/feathericons.ttf?-8is7zf') format('truetype'),
+		url('../fonts/feathericons.svg?-8is7zf#feathericons') format('svg');
 }
 
 
@@ -98,9 +100,7 @@
 
 .grid figure {
 	float: left;
-    width: 30%;
-    height: 30%;
-    margin: 0 1% 1% 1%;
+    margin: 1% 1% 1% 1%;
 }
 /*.grid .item-w2 {
 	width: 40%;

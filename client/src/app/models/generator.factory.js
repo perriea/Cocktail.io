@@ -14,7 +14,8 @@
     			url:     url + '/lorem',
     			isArray: false,
     			params: {
-    				count: '@count'
+    				count: '@count',
+                    paragraphs: '@paragraphs'
     			}
     		},
             getVideo: {
