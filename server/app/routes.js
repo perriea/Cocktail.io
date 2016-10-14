@@ -167,11 +167,11 @@ module.exports = function(app, passport) {
     // =====================================
     // PROFILE SECTION =====================
     // =====================================
-    app.get('/profile', isLoggedIn, function(req, res) {
+    /*app.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile.ejs', {
             user : req.user // get the user out of session and pass to template
         });
-    });
+    });*/
 
 
     // =====================================
@@ -219,9 +219,9 @@ module.exports = function(app, passport) {
     });
 
 
-    app.get('/admin', isAdminIn, function(req, res) {
+    /*app.get('/admin', isAdminIn, function(req, res) {
         res.json({"error" : false, "session" : req.session.passport });
-    });
+    });*/
 
 
     // All routes not found => 404
@@ -233,6 +233,7 @@ module.exports = function(app, passport) {
 
 // =====================================
 // MIDDLEWARE FUNCTIONS ================
+// A PASSER DANS UN FICHIER ============
 // =====================================
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
