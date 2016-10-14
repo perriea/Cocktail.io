@@ -24,30 +24,31 @@
       var vm         = this;
       vm.loading     = false;
       vm.caracters   = 30;
-      vm.paragraphes = 2;
+      vm.paragraphs  = 2;
+      vm.result      = '';
 
       vm.sendRequest = sendRequest;
 
       function sendRequest() {
-        if ($scope.loading === true) {
+        if (vm.loading === true) {
           return ;
         }
         vm.loading = true;
-        console.log(vm.caracters);
-        console.log(vm.paragraphes);
 
-        // Generator
-        // .query({
-        //   caracters:    vm.caracters,
-        //   paragraphes:  vm.paragraphes
-        // }).$promise
-        // .then(callBackSuccess)
-        // ["catch"](callsBackError)
-        // ["finally"](callBackFinally);
+        Generator
+        .getText({
+          count:       vm.caracters,
+          paragraphs:  vm.paragraphs
+        }).$promise
+        .then(callBackSuccess)
+        ["catch"](callBackError)
+        ["finally"](callBackFinally);
+
       }
 
       function callBackSuccess (result) {
-        vm.result = result;
+        vm.result = result.data;
+        console.log(vm.result);
       }
       function callBackError (error) {
         console.log(error);
