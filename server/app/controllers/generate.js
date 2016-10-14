@@ -12,19 +12,25 @@ module.exports = {
         var paragraphs = req.query.paragraphs;
         var output = [];
 
-        for (var i = 0; i < paragraphs; i++)
+        if (validator.isInt(count, { min: 0, max: 1000 }) &&
+            validator.isInt(paragraphs, { min: 0, max: 100 }))
         {
-            var lorem = loremIpsum({
-                count: count,
-                units: 'words',
-                format: 'html',
-                random: Math.random
-            });
+            for (var i = 0; i < paragraphs; i++)
+            {
+                var lorem = loremIpsum({
+                    count: count,
+                    units: 'words',
+                    format: 'html',
+                    random: Math.random
+                });
 
-            output += "<p>" + lorem + "</p>";
+                output += "<p>" + lorem + "</p>";
+            }
+
+            res.status(200).json({"error" : false, "data" : output });
         }
-
-        res.status(200).json({"error" : false, "data" : output });
+        else
+            res.status(200).json({"error" : true, "data" : [] });
     },
 
     // GET /api/generate/password
