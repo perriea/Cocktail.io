@@ -42,6 +42,8 @@ app.use(expressSession({
 	resave: true,
     saveUninitialized: true
 }));
+
+// init session passport
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -50,7 +52,8 @@ app.use(flash());
 //app.use(express.static(__dirname + '/public')); 
 
 // routes ==================================================
-require('./app/routes')(app, passport); // configure our routes
+var middleware = require('./app/middleware');
+require('./app/routes')(app, passport, middleware);
 require('./config/passport')(passport);
 
 // start app ===============================================
