@@ -3,14 +3,14 @@
 // expose our config directly to our application using module.exports
 module.exports = {
     'twitterAuth' : {
-        'consumerKey'       : 'IIBCRks7KKQmCd51pswR2pkaQ',
-        'consumerSecret'    : 'mzkWsjKb6ydYAYPd718I3hXoORWTcAxlvv9tJufy87j1FNVdSE',
-        'callbackURL'       : 'http://127.0.0.1:3000/api/auth/twitter/callback'
+        'consumerKey'       : 'blabla',
+        'consumerSecret'    : 'blabla',
+        'callbackURL'       : 'blabla'
     },
 
     'googleAuth' : {
-        'clientID'      : '662568050796-fdeb4pggmniuogu92mobdh08pjgfqsro.apps.googleusercontent.com',
-        'clientSecret'  : 'gzG_OAcU4gefYESxH6vuE-tc',
+        'clientID'      : '662568050796-o70r0o9a9h5407s711crcmdrou79arv0.apps.googleusercontent.com',
+        'clientSecret'  : 'g38kWCEDaPOUqpZhAL7Kmt5q',
         'callbackURL'   : 'http://localhost:3000/api/auth/google/callback'
     }
 };
