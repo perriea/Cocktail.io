@@ -12,35 +12,45 @@ module.exports = {
         var paragraphs = req.query.paragraphs;
         var output = [];
 
-        for (var i = 0; i < paragraphs; i++)
+        if (validator.isInt(count, { min: 0, max: 1000 }) &&
+            validator.isInt(paragraphs, { min: 0, max: 100 }))
         {
-            var lorem = loremIpsum({
-                count: count,
-                units: 'words',
-                format: 'html',
-                random: Math.random
-            });
+            for (var i = 0; i < paragraphs; i++)
+            {
+                var lorem = loremIpsum({
+                    count: count,
+                    units: 'words',
+                    format: 'html',
+                    random: Math.random
+                });
 
-            output += "<p>" + lorem + "</p>";
+                output += "<p>" + lorem + "</p>";
+            }
+
+            res.status(200).json({"error" : false, "data" : output });
         }
-
-        res.status(200).json({"error" : false, "data" : output });
+        else
+            res.status(200).json({"error" : true, "data" : [] });
     },
 
     // GET /api/generate/password
     password: function (req, res) {
-        var count = req.query.count; // int
         var numbers = false;
         var symbols = false;
         var uppercase = false;
 
-        if (typeof req.query.numbers !== 'undefined' && req.query.numbers == 1)
+        if ((typeof req.query.count !== 'undefined' && validator.isInt(req.query.count, { min: 1, max: 200 })))
+            count = req.query.count;
+        else
+            count = 10;
+
+        if ((typeof req.query.numbers !== 'undefined' && validator.isBoolean(req.query.numbers)) && req.query.numbers == 1)
             numbers = true;
 
-        if (typeof req.query.symbols !== 'undefined' && req.query.symbols == 1)
+        if ((typeof req.query.symbols !== 'undefined' && validator.isBoolean(req.query.symbols)) && req.query.symbols == 1)
             symbols = true;
 
-        if (typeof req.query.uppercase !== 'undefined' && req.query.uppercase == 1)
+        if ((typeof req.query.uppercase !== 'undefined' && validator.isBoolean(req.query.uppercase)) && req.query.uppercase == 1)
             uppercase = true;
 
         var password = generator.generate({

@@ -1,11 +1,12 @@
-// chiffrement mot de passe
 var sequelize = require('sequelize');
 var bcrypt = require('bcrypt');
 
 var MUsers  = require("./models/users");
 var Generate = require("./controllers/generate");
 
-module.exports = function(app, passport) {
+var Middleware = require("./middleware");
+
+module.exports = function(app, passport, middleware) {
 
     /**
      * @api {get} /api/generate/lorem Génération de lorem Ipsum
@@ -30,7 +31,7 @@ module.exports = function(app, passport) {
      *     }
      *
      */
-	app.get('/api/generate/lorem', Generate.lorem);
+	app.get('/api/generate/lorem', middleware.isLoggedIn, Generate.lorem);
 
     /**
      * @api {get} /api/generate/password Génération de mot de passe
@@ -126,6 +127,7 @@ module.exports = function(app, passport) {
      */
     app.post('/api/generate/video', Generate.video);
 
+
     // =====================================
     // AUTHENTIFICATION ====================
     // =====================================
@@ -139,11 +141,7 @@ module.exports = function(app, passport) {
     // =====================================
     // LOGIN ===============================
     // =====================================
-    app.get('/login', function(req, res) {
-        res.render('login.ejs', { message: req.flash('loginMessage') }); 
-    });
-
-    app.post('/login', passport.authenticate('local-login', {
+    app.post('/api/auth/login', passport.authenticate('local-login', {
         successRedirect : '/profile', 
         failureRedirect : '/login',
         failureFlash : true
@@ -153,11 +151,7 @@ module.exports = function(app, passport) {
     // =====================================
     // SIGNUP ==============================
     // =====================================
-    app.get('/signup', function(req, res) {
-        res.render('signup.ejs', { message: req.flash('signupMessage') });
-    });
-
-    app.post('/signup', passport.authenticate('local-signup', {
+    app.post('/api/auth/local', passport.authenticate('local-signup', {
         successRedirect : '/profile', 
         failureRedirect : '/signup',
         failureFlash : true
@@ -167,7 +161,7 @@ module.exports = function(app, passport) {
     // =====================================
     // PROFILE SECTION =====================
     // =====================================
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/api/profile', Middleware.isLoggedIn, function(req, res) {
         res.render('profile.ejs', {
             user : req.user // get the user out of session and pass to template
         });
@@ -187,18 +181,6 @@ module.exports = function(app, passport) {
 
 
     // =====================================
-    // GITHUB ROUTES =======================
-    // =====================================
-    app.get('/api/auth/github', passport.authenticate('github', { scope: [ 'user:email' ] }));
-
-    app.get('/api/auth/github/callback',
-        passport.authenticate('github', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-        }));
-
-
-    // =====================================
     // TWITTER ROUTES ======================
     // =====================================
     app.get('/api/auth/twitter', passport.authenticate('twitter'));
@@ -213,45 +195,20 @@ module.exports = function(app, passport) {
     // =====================================
     // LOGOUT ==============================
     // =====================================
-    app.get('/logout', function(req, res) {
+    app.get('/api/auth/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
 
 
-    app.get('/admin', isAdminIn, function(req, res) {
+    app.get('/api/admin', Middleware.isAdminIn, function(req, res) {
         res.json({"error" : false, "session" : req.session.passport });
     });
 
 
     // All routes not found => 404
     app.get('*', function(req, res) {
-        res.json({"error" : true, "status" : 404});
+        res.json({ "error" : true, "status" : 404 });
     });
 
 };
-
-// =====================================
-// MIDDLEWARE FUNCTIONS ================
-// =====================================
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.status(401).send({ error: true, message: "Unauthorized, authentification required" });
-}
-
-function isAdminIn(req, res, next)
-{
-    console.log(req.session.passport);
-    if (req.isAuthenticated()) {
-        MUsers.TUsers.find({where: { authenticate_type: 1, id: req.session.passport }}).then(function (user) {
-            if (user)
-                return next();
-        }).catch(function (e) {
-            console.log("isAdminIn : Erreur dans la requête.");
-        });
-    }
-
-    res.status(401).send({ error: true, message: "Unauthorized, authentification required and admin." });
-}
