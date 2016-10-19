@@ -12,14 +12,38 @@
     	actions = {
     		getText: {
     			url:     url + '/lorem',
-    			isArray: false,
+    			method:  'GET',
+                isArray: false,
     			params: {
-    				count: '@count',
+    				count:      '@count',
                     paragraphs: '@paragraphs'
     			}
     		},
+            getPassword: {
+                url:     url + '/password',
+                method:  'GET',
+                isArray: false,
+                params: {
+                    number:         '@number',
+                    with_number:    '@with_number',
+                    with_symbols:   '@with_symbols',
+                    with_uppercase: '@with_uppercase'
+                }
+            },
+            getUsername: {
+                url:     url + '/username',
+                method:  'GET',
+                isArray: false,
+                params: {
+                    number:         '@number',
+                    with_number:    '@with_number',
+                    with_symbols:   '@with_symbols',
+                    with_uppercase: '@with_uppercase'
+                }
+            },
             getVideo: {
                 url:     url + '/video',
+                method:  'GET',
                 isArray: false,
                 params: {
                     autoplay: '@autoplay',
@@ -27,7 +51,6 @@
                     width:    '@width',
                     src:      '@src'
                 }
-
             }
     	};
         
