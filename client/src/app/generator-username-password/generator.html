@@ -1,0 +1,18 @@
+<div>
+
+    <header>
+        <my-navbar></my-navbar>
+    </header>
+
+    <main>
+        <section class="select-subcategory">
+            <button class="subcategory" ng-click="generator.changeState('username')">texte</button>
+            <button class="subcategory" ng-click="generator.changeState('password')">vidéo</button>
+        </section>
+
+        <username-generator ng-show="generator.type === 'username'"></username-generator>
+        <password-generator ng-show="generator.type === 'password'"></password-generator>
+
+    </main>
+
+</div>
