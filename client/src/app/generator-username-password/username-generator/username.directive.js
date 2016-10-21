@@ -3,16 +3,16 @@
 
   angular
     .module('cocktail.io')
-    .directive('textGenerator', textGenerator);
+    .directive('usernameGenerator', usernameGenerator);
 
   /** @ngInject */
-  function textGenerator() {
+  function usernameGenerator() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/generator/text-generator/text.html',
+      templateUrl: 'app/generator-username-password/username-generator/username.html',
       scope: {
       },
-      controller: TextController,
+      controller: UsernameController,
       controllerAs: 'vm',
       bindToController: true
     };
@@ -20,9 +20,9 @@
     return directive;
 
     /** @ngInject */
-    function TextController(Generator) {
+    function UsernameController(Generator) {
       var vm         = this;
-      vm.loading     = false;
+      /*vm.loading     = false;
       vm.caracters   = 30;
       vm.paragraphs  = 2;
       vm.result      = '';
@@ -56,7 +56,7 @@
 
       function callBackFinally () {
         vm.loading = false;
-      }
+      }*/
     }
   }
 

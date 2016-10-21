@@ -18,15 +18,15 @@
         },
         {
             title:      '',
-            subtitle:   'CONTENU',
+            subtitle:   'USERNAME',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
-            link:       '#/generator'
+            link:       '#/generator/username'
         },
         {
             title:      '',
-            subtitle:   'CONTENU',
+            subtitle:   'PASSWORD',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
-            link:       '#/generator'
+            link:       '#/generator/password'
         },
         {
             title:      '',

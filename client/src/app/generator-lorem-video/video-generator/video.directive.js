@@ -9,7 +9,7 @@
   function videoGenerator() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/generator/video-generator/video.html',
+      templateUrl: 'app/generator-lorem-video/video-generator/video.html',
       scope: {
       },
       controller: VideoController,

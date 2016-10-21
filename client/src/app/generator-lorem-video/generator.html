@@ -6,8 +6,8 @@
 
     <main>
         <section class="select-subcategory">
-            <button class="subcategory" ng-click="generator.type = 'text'">texte</button>
-            <button class="subcategory" ng-click="generator.type = 'video'">vidéo</button>
+            <button class="subcategory" ng-click="generator.changeState('lorem')">texte</button>
+            <button class="subcategory" ng-click="generator.changeState('video')">vidéo</button>
         </section>
 
         <text-generator ng-show="generator.type === 'text'"></text-generator>
