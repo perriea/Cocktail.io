@@ -11,35 +11,41 @@
 
     vm.categories = [
         {
-            title:      '',
-            subtitle:   'CONTENU',
+            title:      'CONTENU',
+            subclass:   '',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
             link:       '#/generator'
         },
         {
-            title:      '',
-            subtitle:   'USERNAME',
+            title:      'USERNAME',
+            subclass:   '',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
             link:       '#/generator/username'
         },
         {
-            title:      '',
-            subtitle:   'PASSWORD',
+            title:      'PASSWORD',
+            subclass:   '',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
             link:       '#/generator/password'
         },
         {
-            title:      '',
-            subtitle:   'CONTENU',
+            title:      'CONTENU',
+            subclass:   '',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
             link:       '#/generator'
         },
         {
-            title:      '',
-            subtitle:   'CONTENU',
+            title:      'CONTENU',
+            subclass:   '',
             text:       'Oscar is a decent man. He used to clean porches with pleasure',
             link:       '#/generator'
         }
     ];
+
+    vm.getClass = getClass;
+
+    function getClass(categorie) {
+        return categorie.subclass;
+    }
   }
 })();
