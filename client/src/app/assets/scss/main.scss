@@ -6,19 +6,14 @@ les sources en bas de la page web.
 ========================================================================== */
 
 
-/*@import "_settings.blank.scss";*/
-@import "_settings.colors.scss";
-@import "_settings.fonts.scss";
+/*@import "tools.blank.scss";*/
 
-@import "__tools.mixins.scss";
-/*@import "__tools.blank.scss";*/
+@import "generic.body.scss";
+@import "generic.header.scss";
 
-@import "___generic.body.scss";
-@import "___generic.header.scss";
+@import "block.category.scss";
+@import "block.grid.scss";
 
-@import "____block.sub-category.scss"; 
-@import "____block.category.scss"; 
-@import "____block.grid.scss";
 
 /*@import "____elements.blank.scss";*/
 
