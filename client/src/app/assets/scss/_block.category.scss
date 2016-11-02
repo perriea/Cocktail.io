@@ -1,4 +1,5 @@
-
+@import "settings.colors.scss";
+@import "settings.fonts.scss";
 
 h3 {
 	text-transform: uppercase;
@@ -13,24 +14,26 @@ h3 {
 	margin: auto;
 	margin-bottom: 25px;
 	margin-top: 25px;
+	position: relative;
 }
 
 .subcategory {
 	background-color: #ffffff;
 	height: 92px;
-	width: 350px;
+	max-width: 350px;
+	width: 45%;
 	border: #ffffff solid 10px;
 	transition: all 0.5s ease-in-out;
 	text-transform: uppercase;
-}
-
-.subcategory:last-child {
-	float: right; 
-}
-
-.subcategory:hover {
-	background-color: #9690de;
-	color: #ffffff;
+	display: inline-block;
+	&:last-child{
+		position: absolute;
+		right: 0;
+	}
+	&:hover{
+		background-color: #9690de;
+		color: #ffffff;
+	}
 }
 
 .content-subcategory {
@@ -64,8 +67,8 @@ h3 {
 	font-size: 13px;
 	margin-bottom: 20px;
 	line-height: 20px;
-    overflow: auto;
-    display: block;
+	overflow: auto;
+	display: block;
 }
 
 .input-text {
@@ -73,9 +76,6 @@ h3 {
 	height: 20px;
 	border: 1px solid #9690de;
 	float: right;
-}
-
-.input-text{
 	clear: both;
 }
 
@@ -88,14 +88,32 @@ h3 {
 	height: 30px;
 	border: 1px solid #9690de;
 	background-color: transparent;
-
 	text-transform: uppercase;
-
 	transition: all 0.5s ease-in-out;
-
+	&:hover {
+		background-color: #9690de;
+		color: #ffffff;
+	}
 }
 
-.submit:hover {
-	background-color: #9690de;
-	color: #ffffff;
+
+@media screen and (max-width: 1224px)
+{
+	.select-subcategory {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 768px)
+{
+	.select-subcategory {
+		width: 100%;
+	}
+
+	.parameters {
+		width: 30%;
+	}
+	.result {
+		width: 65%;
+	}
 }
