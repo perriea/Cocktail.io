@@ -6,7 +6,7 @@
 
   <main class="grid">
     <figure class="effect-oscar" ng-repeat="categorie in ::main.categories">
-      <figcaption class="{{::categorie.class}}">
+      <figcaption ng-class="main.getClass(categorie)">
         <h2>{{ ::categorie.title }}<span>{{ ::categorie.subtitle }}</span></h2>
         <p>{{ ::categorie.text }}</p>
         <a href="{{ ::categorie.link }}">View more</a>
