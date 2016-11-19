@@ -31,7 +31,7 @@ module.exports = function(app, passport, middleware) {
      *     }
      *
      */
-	app.get('/api/generate/lorem', middleware.isLoggedIn, Generate.lorem);
+	app.get('/api/generate/lorem', Generate.lorem);
 
     /**
      * @api {get} /api/generate/password Génération de mot de passe
