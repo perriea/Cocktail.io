@@ -33,8 +33,6 @@
       vm.intern  = false;
       vm.loading = false;
 
-      console.log($location.path());
-
       vm.intern_src = [
         { name: "bloub.mp4", path: "/bloub.mp4"},
         { name: "pouet.mp4", path: "/pouet.mp4"}
