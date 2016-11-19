@@ -1,0 +1,18 @@
+<div>
+
+    <header>
+        <my-navbar></my-navbar>
+    </header>
+
+    <main>
+        <section class="select-subcategory">
+            <button class="subcategory" ng-click="generator.changeState('shape')">Forme</button>
+            <button class="subcategory" ng-click="generator.changeState('gradient')">Dégradé</button>
+        </section>
+
+        <shape-generator ng-show="generator.type === 'shape'"></shape-generator>
+        <gradient-generator ng-show="generator.type === 'gradient'"></gradient-generator>
+
+    </main>
+
+</div>

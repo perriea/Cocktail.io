@@ -54,6 +54,23 @@
         templateUrl: 'app/generator-username-password/generator.html',
         controller: 'GeneratorUserPassController',
         controllerAs: 'generator'
+      }) 
+
+
+      /*
+      ** Generator shape and Gradient
+      */
+      .state('generator-shape', {
+        url: '/generator/shape',
+        templateUrl: 'app/generator-shape-gradient/generator.html',
+        controller: 'GeneratorShapeGradientController',
+        controllerAs: 'generator'
+      })
+      .state('generator-gradient', {
+        url: '/generator/gradient',
+        templateUrl: 'app/generator-shape-gradient/generator.html',
+        controller: 'GeneratorShapeGradientController',
+        controllerAs: 'generator'
       })    
       ;
 

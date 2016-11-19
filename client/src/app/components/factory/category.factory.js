@@ -39,8 +39,8 @@
                 title:      '',
                 subtitle:   'CSS & Animations',
                 subclass:   'css',
-                text:       'Rien pour l\'instant',
-                link:       '#/generator'
+                text:       'Formes - Dégradés',
+                link:       '#/generator/shape'
             },
             {
                 title:      '',

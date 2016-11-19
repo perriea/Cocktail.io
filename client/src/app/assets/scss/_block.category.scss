@@ -34,6 +34,11 @@ h3 {
 		background-color: #9690de;
 		color: #ffffff;
 	}
+	&.active {
+	border: solid 10px #fff;
+    background: #9690de;
+    color: #fff;
+}
 }
 
 .content-subcategory {
@@ -69,6 +74,14 @@ h3 {
 	line-height: 20px;
 	overflow: auto;
 	display: block;
+	display: inline-block;
+	width: 100%;
+}
+
+.input {
+	float: right;
+	clear: both;
+	display: inline-block;
 }
 
 .input-text {
@@ -124,4 +137,6 @@ h3 {
 	height: 17px;
 	background-color: #ffffff;
 }
+
+
 
