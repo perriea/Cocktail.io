@@ -4,7 +4,7 @@ var sequelize = db.sequelize,
     access = db.access;
 
 var Pref = access.define('c_preferences', {
-    userId: {
+    user_id: {
         type: access.Sequelize.INTEGER(5),
         allowNull: false
     },
