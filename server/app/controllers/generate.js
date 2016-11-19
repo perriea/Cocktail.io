@@ -12,8 +12,6 @@ module.exports = {
         var paragraphs = req.query.paragraphs;
         var output = [];
 
-
-
         if ((typeof req.query.count !== 'undefined' && validator.isInt(count, { min: 0, max: 25000 })) &&
             (typeof req.query.paragraphs !== 'undefined' && validator.isInt(paragraphs, { min: 0, max: 25 })))
         {
@@ -72,16 +70,21 @@ module.exports = {
         var strings = "";
         var output = [];
 
-        for (var i = 0; i < count; i++)
+        if (validator.isInt(count, { min: 1, max: 100 }))
         {
-            strings = "";
+            for (var i = 0; i < count; i++)
+            {
+                strings = "";
 
-            strings = generateName();
-            output = strings.split(' ');
-            sillyName[i] = output[0];
+                strings = generateName();
+                output = strings.split(' ');
+                sillyName[i] = output[0];
+            }
+
+            res.status(200).json({"error" : false, "data" : sillyName });
         }
-
-        res.status(200).json({"error" : false, "data" : sillyName });
+        else
+            res.status(200).json({"error" : true, "data" : [], "message" : "Nombre trop grand ou trop petit" });
     },
 
     // POST /api/generate/video
