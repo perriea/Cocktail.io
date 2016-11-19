@@ -12,8 +12,8 @@ module.exports = {
         var paragraphs = req.query.paragraphs;
         var output = [];
 
-        if (validator.isInt(count, { min: 0, max: 1000 }) &&
-            validator.isInt(paragraphs, { min: 0, max: 100 }))
+        if ((typeof req.query.count !== 'undefined' && validator.isInt(count, { min: 0, max: 25000 })) &&
+            (typeof req.query.paragraphs !== 'undefined' && validator.isInt(paragraphs, { min: 0, max: 25 })))
         {
             for (var i = 0; i < paragraphs; i++)
             {
@@ -70,40 +70,56 @@ module.exports = {
         var strings = "";
         var output = [];
 
-        for (var i = 0; i < count; i++)
+        if (validator.isInt(count, { min: 1, max: 100 }))
         {
-            strings = "";
+            for (var i = 0; i < count; i++)
+            {
+                strings = "";
 
-            strings = generateName();
-            output = strings.split(' ');
-            sillyName[i] = output[0];
+                strings = generateName();
+                output = strings.split(' ');
+                sillyName[i] = output[0];
+            }
+
+            res.status(200).json({"error" : false, "data" : sillyName });
         }
-
-        res.status(200).json({"error" : false, "data" : sillyName });
+        else
+            res.status(200).json({"error" : true, "data" : [], "message" : "Nombre trop grand ou trop petit" });
     },
 
     // POST /api/generate/video
     video: function (req, res) {
         var autoplay = req.body.autoplay;
+        var controls = req.body.controls;
+        var loop = req.body.loop;
+        var muted = req.body.muted;
         var height = req.body.height;
         var width = req.body.width;
         var src = req.body.src;
-        var autoplay_string = "";
+        var option_string = "";
         var html = "";
 
-        if (typeof height !== 'undefined' && typeof width !== 'undefined'
-            && typeof autoplay !== 'undefined')
+        if (typeof height !== 'undefined' && typeof width !== 'undefined')
         {
-            if (validator.isInt(height) && validator.isInt(width)
-                && validator.isBoolean(autoplay))
+            if ((validator.isInt(height) && height > 0) && (validator.isInt(width) && width > 0)
+                && validator.isURL(src))
             {
-                if (typeof height !== 'undefined')
-                    autoplay_string = " autoplay";
+                if (typeof autoplay !== 'undefined' && autoplay == 'true')
+                    option_string = option_string + " autoplay";
+
+                if (typeof loop !== 'undefined' && loop == 'true')
+                    option_string = option_string + " loop";
+
+                if (typeof controls !== 'undefined' && controls == 'true')
+                    option_string = option_string + " controls";
+
+                if (typeof muted !== 'undefined' && muted == 'true')
+                    option_string = option_string + " muted";
 
                 if (!src)
                     src = "http://mazwai.com/system/posts/videos/000/000/220/preview_mp4_3/the_valley-graham_uheslki.mp4";
 
-                html = "<video src='" + src + "' width='" + width + "' height='" + height + "' controls" + autoplay_string + ">";
+                html = "<video src='" + src + "' width='" + width + "' height='" + height + "'" + option_string + ">";
 
                 res.status(200).json({"error" : false, "data" : html });
             }

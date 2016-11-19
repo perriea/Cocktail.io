@@ -10,7 +10,10 @@ var Type_connect = access.define('c_type_connect', {
   	},
 	description: {
 		type: access.Sequelize.STRING(50),
-		allowNull: true
+		allowNull: true,
+		validate: {
+			isJSON: true
+		}
 	}
 }, { timestamps: false });
 
