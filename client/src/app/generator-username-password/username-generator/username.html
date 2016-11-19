@@ -3,7 +3,10 @@
         <h3>paramètres</h3>
         <form>
 
-            <input ng-click="vm.sendRequest()" value="Générer" class="submit">
+        <label class="label">Nb de pseudonymes
+            <input type="number" name="caracters-number" value="1" min="1" max="100" class="input"></label>
+
+            <input ng-click="vm.sendRequest()" type="submit" value="Générer" class="submit"></label>
         </form>
     </div>
 
