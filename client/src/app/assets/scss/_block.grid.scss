@@ -51,11 +51,11 @@
 	border-style: solid;
 	&:before {
 		position: absolute;
-		top: 0px;
-		right: 0px;
-		bottom: 0px;
-		left: 0px;
-		content: '';
+		top     : 0px;
+		right   : 0px;
+		bottom  : 0px;
+		left    : 0px;
+		content : '';
 	}
 	&.content{
 		color 		: $colorPortage;
