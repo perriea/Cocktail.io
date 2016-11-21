@@ -30,8 +30,12 @@ module.exports = {
             res.status(200).send({"error" : false, "data" : output });
         }
         else
+<<<<<<< 8eb5ad35f5071a5c58eda8c4be1d16160fba5f00
 <<<<<<< 308e82827e37c44ab16cc2d6cab9bf9c386ad5ef
             res.status(400).json({"error" : true, "data" : [] });
+=======
+            res.status(400).send({"error" : true, "data" : [] });
+>>>>>>> Ajout du module de preferences
 =======
             res.status(400).send({"error" : true, "data" : [] });
 >>>>>>> Ajout du module de preferences
