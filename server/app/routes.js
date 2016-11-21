@@ -128,9 +128,15 @@ module.exports = function(app, passport, middleware) {
      */
     app.post('/api/generate/video', Generate.video);
 
-    app.get('/api/preferences', Pref.read);
-    app.post('/api/preferences', Pref.write);
+    // =====================================
+    // PROFILE SECTION =====================
+    // =====================================
+    app.get('/api/profile', Middleware.isLoggedIn, function(req, res) {
+        res.status(200).json({"error" : true, "data" : req.user });
+    });
 
+    app.get('/api/preferences', Middleware.isLoggedIn, Pref.read);
+    app.post('/api/preferences', Pref.write);
 
     // =====================================
     // AUTHENTIFICATION ====================
@@ -155,21 +161,11 @@ module.exports = function(app, passport, middleware) {
     // =====================================
     // SIGNUP ==============================
     // =====================================
-    app.post('/api/auth/local', passport.authenticate('local-signup', {
+    app.post('/api/auth/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile', 
         failureRedirect : '/signup',
         failureFlash : true
     }));
-
-
-    // =====================================
-    // PROFILE SECTION =====================
-    // =====================================
-    app.get('/api/profile', Middleware.isLoggedIn, function(req, res) {
-        res.render('profile.ejs', {
-            user : req.user // get the user out of session and pass to template
-        });
-    });
 
 
     // =====================================

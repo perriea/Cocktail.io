@@ -27,10 +27,14 @@ module.exports = {
                 output += "<p>" + lorem + "</p>";
             }
 
-            res.status(200).json({"error" : false, "data" : output });
+            res.status(200).send({"error" : false, "data" : output });
         }
         else
+<<<<<<< 308e82827e37c44ab16cc2d6cab9bf9c386ad5ef
             res.status(400).json({"error" : true, "data" : [] });
+=======
+            res.status(400).send({"error" : true, "data" : [] });
+>>>>>>> Ajout du module de preferences
     },
 
     // GET /api/generate/password
@@ -38,29 +42,32 @@ module.exports = {
         var numbers = false;
         var symbols = false;
         var uppercase = false;
+        var count = 0;
 
         if ((typeof req.query.count !== 'undefined' && validator.isInt(req.query.count, { min: 1, max: 200 })))
+        {
             count = req.query.count;
+
+            if ((typeof req.query.numbers !== 'undefined' && validator.isBoolean(req.query.numbers)) && req.query.numbers == 1)
+                numbers = true;
+
+            if ((typeof req.query.symbols !== 'undefined' && validator.isBoolean(req.query.symbols)) && req.query.symbols == 1)
+                symbols = true;
+
+            if ((typeof req.query.uppercase !== 'undefined' && validator.isBoolean(req.query.uppercase)) && req.query.uppercase == 1)
+                uppercase = true;
+
+            var password = generator.generate({
+                length: count,
+                numbers: numbers,
+                symbols: symbols,
+                uppercase: uppercase
+            });
+
+            res.status(200).json({"error" : false, "data" : password });
+        }
         else
-            count = 10;
-
-        if ((typeof req.query.numbers !== 'undefined' && validator.isBoolean(req.query.numbers)) && req.query.numbers == 1)
-            numbers = true;
-
-        if ((typeof req.query.symbols !== 'undefined' && validator.isBoolean(req.query.symbols)) && req.query.symbols == 1)
-            symbols = true;
-
-        if ((typeof req.query.uppercase !== 'undefined' && validator.isBoolean(req.query.uppercase)) && req.query.uppercase == 1)
-            uppercase = true;
-
-        var password = generator.generate({
-            length: count,
-            numbers: numbers,
-            symbols: symbols,
-            uppercase: uppercase
-        });
-
-        res.status(200).json({"error" : false, "data" : password });
+            res.status(400).json({"error" : true, "data" : [] });
     },
 
     // GET /api/generate/username
@@ -84,7 +91,7 @@ module.exports = {
             res.status(200).json({"error" : false, "data" : sillyName });
         }
         else
-            res.status(200).json({"error" : true, "data" : [], "message" : "Nombre trop grand ou trop petit" });
+            res.status(400).json({"error" : true, "data" : [], "message" : "Nombre trop grand ou trop petit" });
     },
 
     // POST /api/generate/video
