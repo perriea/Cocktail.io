@@ -35,10 +35,7 @@
                 method:  'GET',
                 isArray: false,
                 params: {
-                    number:         '@number',
-                    with_number:    '@with_number',
-                    with_symbols:   '@with_symbols',
-                    with_uppercase: '@with_uppercase'
+                    count: '@count',
                 }
             },
             getVideo: {

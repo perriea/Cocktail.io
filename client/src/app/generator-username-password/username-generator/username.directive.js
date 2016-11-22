@@ -21,11 +21,9 @@
 
     /** @ngInject */
     function UsernameController(Generator) {
-      var vm         = this;
-      /*vm.loading     = false;
-      vm.caracters   = 30;
-      vm.paragraphs  = 2;
-      vm.result      = '';
+      var vm     = this;
+      vm.loading = false;
+      vm.count   = 10;
 
       vm.sendRequest = sendRequest;
 
@@ -36,9 +34,8 @@
         vm.loading = true;
 
         Generator
-        .getText({
-          count:       vm.caracters,
-          paragraphs:  vm.paragraphs
+        .getUsername({
+          count: vm.count
         }).$promise
         .then(callBackSuccess)
         ["catch"](callBackError)
@@ -56,7 +53,7 @@
 
       function callBackFinally () {
         vm.loading = false;
-      }*/
+      }
     }
   }
 

@@ -21,40 +21,37 @@
 
     /** @ngInject */
     function PasswordController(Generator) {
-      var vm         = this;
-/*      vm.loading     = false;
-      vm.autoplay    = false;
-      vm.height      = 400;
-      vm.width       = 400;
-      vm.src         = '';
+      var vm      = this;
+      vm.caracter = 10;
+      vm.number   = false;
+      vm.letter   = false;
+      vm.special  = false;
 
       vm.sendRequest = sendRequest;
 
       function sendRequest() {
-        if ($scope.loading === true) {
+        if (vm.loading === true) {
           return ;
         }
         vm.loading = true;
 
 
         Generator
-        .getVideo({
-          autoplay: 'vm.autoplay',
-          height:   'vm.height',
-          width:    'vm.width',
-          src:      'vm.src'
+        .getPassword({
+          count:     vm.caracter,
+          numbers:   vm.number  == 1 ? 1 : 0,
+          uppercase: vm.letter  == 1 ? 1 : 0,
+          symbols:   vm.special == 1 ? 1 : 0
         }).$promise
         .then(callBackSuccess)
-        ["catch"](callsBackError)
+        ["catch"](callBackError)
         ["finally"](callBackFinally);
 
-        /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
-        .then(callBackSuccess, callsBackError); */
-        /*
       }
 
       function callBackSuccess (result) {
-        vm.result = result;
+        vm.result = result.data;
+        console.log(result);
       }
       function callBackError (error) {
         console.log(error);
@@ -62,7 +59,7 @@
 
       function callBackFinally () {
         vm.loading = false;
-      }*/
+      }
     }
   }
 
