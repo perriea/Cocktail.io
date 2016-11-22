@@ -48,7 +48,7 @@
 
       function callBackSuccess (result) {
         vm.result = result.data;
-        console.log(vm.result);
+        console.log(result);
       }
       function callBackError (error) {
         console.log(error);

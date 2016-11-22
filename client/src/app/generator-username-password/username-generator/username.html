@@ -4,7 +4,7 @@
         <form>
 
         <label class="label">Nb de pseudonymes
-            <input type="number" name="caracters-number" value="1" min="1" max="100" class="input"></label>
+            <input type="number" name="caracters-number" value="1" min="1" max="100" class="input" ng-model="vm.count"></label>
 
             <input ng-click="vm.sendRequest()" type="submit" value="Générer" class="submit"></label>
         </form>
@@ -12,6 +12,7 @@
 
     <div class="content result">
         <h3>résultats</h3>
-        <div ng-bind-html="vm.result" style="font-size: 15px;"></div>
-    </div>
+        <div style="font-size: 15px;">
+            <p ng-repeat="username in vm.result" ng-bind="::username"></p>
+        </div>
 </section>
