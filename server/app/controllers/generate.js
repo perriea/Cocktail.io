@@ -142,4 +142,54 @@ module.exports = {
 
     },
 
+    // GET /api/generate/shapes
+    shapes: function (req, res) {
+        var shapes = req.query.q;
+        var color_back = req.query.color;
+        var code = null;
+
+        switch (shapes) {
+            case "square":
+                code = "<style>#square { width: 100px; height: 100px; background: red; }</style><div id='square'></div>";
+                break;
+            case "rectangle":
+                code = "<style>#rectangle { width: 200px; height: 100px; background: red; }</style><div id='rectangle'></div>";
+                break;
+            case "circle":
+                code = "<style>#circle { width: 100px; height: 100px; background: red; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; }</style><div id='circle'></div>";
+                break;
+            case "oval":
+                code = "<style>#oval { width: 200px; height: 100px; background: red; -moz-border-radius: 100px / 50px; -webkit-border-radius: 100px / 50px; border-radius: 100px / 50px; }</style><div id='oval'></div>";
+                break;
+            case "triangle-up":
+                code = "<style>#triangle-up { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid red; }</style><div id='triangle-up'></div>";
+                break;
+            case "triangle-down":
+                code = "<style>#triangle-down { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 100px solid red; }</style><div id='triangle-down'></div>";
+                break;
+            case "triangle-left":
+                code = "<style>#triangle-left { width: 0; height: 0; border-top: 50px solid transparent; border-right: 100px solid red; border-bottom: 50px solid transparent; }</style><div id='triangle-left'></div>";
+                break;
+            case "triangle-right":
+                code = "<style>#triangle-right { width: 0; height: 0; border-top: 50px solid transparent; border-left: 100px solid red; border-bottom: 50px solid transparent; } }</style><div id='triangle-right'></div>";
+                break;
+            case "triangle-topleft":
+                code = "<style>#triangle-topleft { width: 0; height: 0; border-top: 100px solid red; border-right: 100px solid transparent; } }</style><div id='triangle-topleft'></div>";
+                break;
+            case "triangle-topright":
+                code = "<style>#triangle-topright { width: 0; height: 0; border-top: 100px solid red; border-left: 100px solid transparent; }</style><div id='triangle-topright'></div>";
+                break;
+            case "triangle-bottomleft":
+                code = "<style>#triangle-bottomleft { width: 0; height: 0; border-bottom: 100px solid red; border-right: 100px solid transparent; }</style><div id='triangle-bottomleft'></div>";
+                break;
+            case "triangle-bottomright":
+                code = "<style>#triangle-bottomright { width: 0; height: 0; border-bottom: 100px solid red; border-left: 100px solid transparent; }</style><div id='triangle-bottomright'></div>";
+                break;
+            default:
+                code = null;
+        }
+
+        res.status(200).json({"error" : true, "data" : code });
+    }
+
 };

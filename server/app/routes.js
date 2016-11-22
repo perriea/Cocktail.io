@@ -129,6 +129,8 @@ module.exports = function(app, passport, middleware) {
      */
     app.post('/api/generate/video', Generate.video);
 
+    app.get('/api/generate/shapes', Generate.shapes);
+
     app.get('/api/template/search', Template.search);
 
     // =====================================
