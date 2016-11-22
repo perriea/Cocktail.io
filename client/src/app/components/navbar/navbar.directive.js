@@ -22,24 +22,33 @@
     /** @ngInject */
     function NavbarController($mdDialog) {
       var vm = this;
-      /*
+
       vm.connection  = connection;
       vm.inscription = inscription;
 
-      function connection() {
-
+      function connection(event) {
+        show(1, event);
       }
 
-      function inscription() {
-
+      function inscription(event) {
+        show(2, event);
       }
 
-      function show() {
+      function show(type, event) {
         $mdDialog.show({
           controller:          DialogController,
           parent:              angular.element(document.body),
           templateUrl:         'app/components/navbar/dialog.html',
-          clickOutsideToClose: true
+          controllerAs:        'vm',
+          targetEvent:         event,
+          disableParentScroll: true,
+          hasBackdrop:         true,
+          focusOnOpen:         true,
+          bindToController:    true,
+          clickOutsideToClose: true,
+          locals: {
+            type: type
+          }
         }).then(callBackSuccess, callBackError);
       }
 
@@ -49,13 +58,23 @@
 
       function callBackError(result) {
         console.log(result);
-      } */
-
+      }
     }
   }
-/*
-  function DialogController($mdDialog) {
+
+  function DialogController($mdDialog, type) {
       var vm = this;
-  } */
+
+      vm.type     = type;
+      vm.email    = '';
+      vm.password = '';
+
+
+      vm.cancel = cancel;
+
+      function cancel() {
+        $mdDialog.cancel();
+      };
+  }
 
 })();

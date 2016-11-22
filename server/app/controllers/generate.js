@@ -30,7 +30,7 @@ module.exports = {
             res.status(200).json({"error" : false, "data" : output });
         }
         else
-            res.status(200).json({"error" : true, "data" : [] });
+            res.status(400).json({"error" : true, "data" : [] });
     },
 
     // GET /api/generate/password

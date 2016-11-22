@@ -6,11 +6,21 @@
 
     <main>
         <section class="select-subcategory">
-            <button class="subcategory" ng-click="generator.changeState('lorem')">texte</button>
-            <button class="subcategory" ng-click="generator.changeState('video')">vidéo</button>
+            <button
+                ng-class="{subcategory: true}"
+                ng-click="generator.changeState('lorem')"
+            >
+                texte
+            </button>
+            <button
+                ng-class="{subcategory: true}"
+                ng-click="generator.changeState('video')"
+            >
+                vidéo
+            </button>
         </section>
 
-        <text-generator ng-show="generator.type === 'text'"></text-generator>
+        <text-generator  ng-show="generator.type === 'text'"></text-generator>
         <video-generator ng-show="generator.type === 'video'"></video-generator>
 
     </main>
