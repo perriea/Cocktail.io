@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt');
 var MUsers  = require("./models/users");
 var Generate = require("./controllers/generate");
 var Pref = require("./controllers/preferences");
+var Template = require("./controllers/template");
 
 var Middleware = require("./middleware");
 
@@ -127,6 +128,8 @@ module.exports = function(app, passport, middleware) {
      *     }
      */
     app.post('/api/generate/video', Generate.video);
+
+    app.get('/api/template/search', Template.search);
 
     // =====================================
     // PROFILE SECTION =====================
