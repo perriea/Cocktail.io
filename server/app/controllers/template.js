@@ -79,12 +79,8 @@ module.exports = {
                                 }
                                 else if (typeof file_type_min !== 'undefined' && file_type_min == false)
                                 {
-                                    //console.log("toto");
                                     if (file_type == ".js" || file_type == ".css" || file_type == ".map")
                                     {
-                                        //console.log(output[0].assets[i].files[k]);
-                                        //console.log((/\(^[^.]+$|\.(?!(min.js|min.css|min.map)$)([^.]+$)/i).test(output[0].assets[i].files[k]));
-                                        console.log((/\.(min.js|min.css|min.map)$/i).test(output[0].assets[i].files[k]));
                                         if (!(/\.(min.js|min.css|min.map)$/i).test(output[0].assets[i].files[k]))
                                         {
                                             data_out[u] = [

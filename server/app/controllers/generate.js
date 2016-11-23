@@ -12,9 +12,12 @@ module.exports = {
         var paragraphs = req.query.paragraphs;
         var output = [];
 
+        // on verifie que les parametres obligatoire sont rempli
+        // et dans un interval
         if ((typeof req.query.count !== 'undefined' && validator.isInt(count, { min: 0, max: 25000 })) &&
             (typeof req.query.paragraphs !== 'undefined' && validator.isInt(paragraphs, { min: 0, max: 25 })))
         {
+            // on cree les paragraphe avec le nombre de mots indiqués
             for (var i = 0; i < paragraphs; i++)
             {
                 var lorem = loremIpsum({
@@ -30,15 +33,7 @@ module.exports = {
             res.status(200).send({"error" : false, "data" : output });
         }
         else
-<<<<<<< 8eb5ad35f5071a5c58eda8c4be1d16160fba5f00
-<<<<<<< 308e82827e37c44ab16cc2d6cab9bf9c386ad5ef
             res.status(400).json({"error" : true, "data" : [] });
-=======
-            res.status(400).send({"error" : true, "data" : [] });
->>>>>>> Ajout du module de preferences
-=======
-            res.status(400).send({"error" : true, "data" : [] });
->>>>>>> Ajout du module de preferences
     },
 
     // GET /api/generate/password
@@ -48,6 +43,7 @@ module.exports = {
         var uppercase = false;
         var count = 0;
 
+        // on regarde les parametre et ceux qui sont activés
         if ((typeof req.query.count !== 'undefined' && validator.isInt(req.query.count, { min: 1, max: 200 })))
         {
             count = req.query.count;
@@ -61,6 +57,7 @@ module.exports = {
             if ((typeof req.query.uppercase !== 'undefined' && validator.isBoolean(req.query.uppercase)) && req.query.uppercase == 1)
                 uppercase = true;
 
+            // on génère le mot de passe
             var password = generator.generate({
                 length: count,
                 numbers: numbers,
@@ -81,12 +78,14 @@ module.exports = {
         var strings = "";
         var output = [];
 
+        // on regarde s'il s'agit bien d'un nombre et dans l'interval
         if (validator.isInt(count, { min: 1, max: 100 }))
         {
             for (var i = 0; i < count; i++)
             {
                 strings = "";
 
+                // on genere le nom
                 strings = generateName();
                 output = strings.split(' ');
                 sillyName[i] = output[0];
@@ -110,44 +109,40 @@ module.exports = {
         var option_string = "";
         var html = "";
 
-        if (typeof height !== 'undefined' && typeof width !== 'undefined')
+        // on regarde les parametres obligatoires
+        if ((typeof height !== 'undefined' && validator.isInt(height, { min: 1 })) &&
+            (typeof width !== 'undefined' && validator.isInt(width, { min: 1 })) && validator.isURL(src))
         {
-            if ((validator.isInt(height) && height > 0) && (validator.isInt(width) && width > 0)
-                && validator.isURL(src))
-            {
-                if (typeof autoplay !== 'undefined' && autoplay == 'true')
-                    option_string = option_string + " autoplay";
+            if (typeof autoplay !== 'undefined' && autoplay == 'true')
+                option_string = option_string + " autoplay";
 
-                if (typeof loop !== 'undefined' && loop == 'true')
-                    option_string = option_string + " loop";
+            if (typeof loop !== 'undefined' && loop == 'true')
+                option_string = option_string + " loop";
 
-                if (typeof controls !== 'undefined' && controls == 'true')
-                    option_string = option_string + " controls";
+            if (typeof controls !== 'undefined' && controls == 'true')
+                option_string = option_string + " controls";
 
-                if (typeof muted !== 'undefined' && muted == 'true')
-                    option_string = option_string + " muted";
+            if (typeof muted !== 'undefined' && muted == 'true')
+                option_string = option_string + " muted";
 
-                if (!src)
-                    src = "http://mazwai.com/system/posts/videos/000/000/220/preview_mp4_3/the_valley-graham_uheslki.mp4";
+            // par defaut si la chaine est vide
+            if (!src)
+                src = "http://mazwai.com/system/posts/videos/000/000/220/preview_mp4_3/the_valley-graham_uheslki.mp4";
 
-                html = "<video src='" + src + "' width='" + width + "' height='" + height + "'" + option_string + ">";
+            html = "<video src='" + src + "' width='" + width + "' height='" + height + "'" + option_string + ">";
 
-                res.status(200).json({"error" : false, "data" : html });
-            }
-            else
-                res.status(400).json({"error" : true, "data" : false });
+            res.status(200).json({"error" : false, "data" : html });
         }
         else
             res.status(400).json({"error" : true, "data" : false });
-
     },
 
     // GET /api/generate/shapes
     shapes: function (req, res) {
         var shapes = req.query.q;
-        var color_back = req.query.color;
         var code = null;
 
+        // choix parmis les formes
         switch (shapes) {
             case "square":
                 code = "<style>#square { width: 100px; height: 100px; background: red; }</style><div id='square'></div>";
