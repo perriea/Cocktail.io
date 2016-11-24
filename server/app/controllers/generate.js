@@ -14,8 +14,8 @@ module.exports = {
 
         // on verifie que les parametres obligatoire sont rempli
         // et dans un interval
-        if ((typeof req.query.count !== 'undefined' && validator.isInt(count, { min: 0, max: 25000 })) &&
-            (typeof req.query.paragraphs !== 'undefined' && validator.isInt(paragraphs, { min: 0, max: 25 })))
+        if ((typeof req.query.count !== 'undefined' && validator.isInt(count, { min: 1, max: 25000 })) &&
+            (typeof req.query.paragraphs !== 'undefined' && validator.isInt(paragraphs, { min: 1, max: 25 })))
         {
             // on cree les paragraphe avec le nombre de mots indiqués
             for (var i = 0; i < paragraphs; i++)
@@ -94,7 +94,7 @@ module.exports = {
             res.status(200).json({"error" : false, "data" : sillyName });
         }
         else
-            res.status(400).json({"error" : true, "data" : [], "message" : "Nombre trop grand ou trop petit" });
+            res.status(400).json({"error" : true, "data" : [] });
     },
 
     // POST /api/generate/video

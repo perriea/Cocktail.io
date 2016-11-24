@@ -22,40 +22,78 @@ module.exports = {
         if (typeof library !== 'undefined')
         {
             // on requete l'API externe
-            request('http://api.jsdelivr.com/v1/jsdelivr/libraries/' + library, function (error, response, body) {
-                console.log(error);
+            request('http://api.jsdelivr.com/v1/jsdelivr/libraries/' + library, function (error, response, body)
+            {
                 if (!error && response.statusCode == 200)
                 {
                     var output = JSON.parse(body);
-                    filename = output[0].mainfile;
-
-                    // on regarde si une version est demandeé pour le user
-                    // sinon on prend la derniere par defaut
-                    if (typeof version !== 'undefined')
-                        last = version;
-                    else
-                        last = output[0].lastversion;
-
-                    // on recherche la version demandée
-                    for (var i = 0; i < output[0].assets.length; i++)
+                    if (output.length > 0)
                     {
-                        if (last == output[0].assets[i].version)
+                        filename = output[0].mainfile;
+
+                        // on regarde si une version est demandeé pour le user
+                        // sinon on prend la derniere par defaut
+                        if (typeof version !== 'undefined')
+                            last = version;
+                        else
+                            last = output[0].lastversion;
+
+                        // on recherche la version demandée
+                        for (var i = 0; i < output[0].assets.length; i++)
                         {
-                            // on regarde les elements un par un
-                            // on recupere leur type
-                            for (var k = 0; k < output[0].assets[i].files.length; k++)
+                            if (last == output[0].assets[i].version)
                             {
-                                file_type = (output[0].assets[i].files[k]).match(/\.[0-9a-z]+$/i);
-
-                                // on regarde si l'utilisateur demande des fichiers minimisés
-                                // ou non
-                                // s'il ne precise pas on affiche les deux
-                                if (typeof file_type_min !== 'undefined' && file_type_min == true)
+                                // on regarde les elements un par un
+                                // on recupere leur type
+                                for (var k = 0; k < output[0].assets[i].files.length; k++)
                                 {
-                                    // les fichiers min consernent seulement les fichier JS, CSS et MAP
-                                    if (file_type == ".js" || file_type == ".css" || file_type == ".map")
+                                    file_type = (output[0].assets[i].files[k]).match(/\.[0-9a-z]+$/i);
+
+                                    // on regarde si l'utilisateur demande des fichiers minimisés
+                                    // ou non
+                                    // s'il ne precise pas on affiche les deux
+                                    if (typeof file_type_min !== 'undefined' && file_type_min == true)
                                     {
-                                        if ((/\.(min.js|min.css|min.map)$/i).test(output[0].assets[i].files[k]))
+                                        // les fichiers min consernent seulement les fichier JS, CSS et MAP
+                                        if (file_type == ".js" || file_type == ".css" || file_type == ".map")
+                                        {
+                                            if ((/\.(min.js|min.css|min.map)$/i).test(output[0].assets[i].files[k]))
+                                            {
+                                                data_out[u] = [
+                                                    file_type[0].substring(1),
+                                                    url + library + "/" + last + "/" + output[0].assets[i].files[k]
+                                                ];
+
+                                                u++;
+                                            }
+                                        }
+                                        // les autres on les affiche
+                                        else
+                                        {
+                                            data_out[u] = [
+                                                file_type[0].substring(1),
+                                                url + library + "/" + last + "/" + output[0].assets[i].files[k]
+                                            ];
+
+                                            u++;
+                                        }
+
+                                    }
+                                    else if (typeof file_type_min !== 'undefined' && file_type_min == false)
+                                    {
+                                        if (file_type == ".js" || file_type == ".css" || file_type == ".map")
+                                        {
+                                            if (!(/\.(min.js|min.css|min.map)$/i).test(output[0].assets[i].files[k]))
+                                            {
+                                                data_out[u] = [
+                                                    file_type[0].substring(1),
+                                                    url + library + "/" + last + "/" + output[0].assets[i].files[k]
+                                                ];
+
+                                                u++;
+                                            }
+                                        }
+                                        else
                                         {
                                             data_out[u] = [
                                                 file_type[0].substring(1),
@@ -65,7 +103,6 @@ module.exports = {
                                             u++;
                                         }
                                     }
-                                    // les autres on les affiche
                                     else
                                     {
                                         data_out[u] = [
@@ -76,48 +113,15 @@ module.exports = {
                                         u++;
                                     }
 
+                                    file_type = null;
+                                    file_test_min = false;
+
                                 }
-                                else if (typeof file_type_min !== 'undefined' && file_type_min == false)
-                                {
-                                    if (file_type == ".js" || file_type == ".css" || file_type == ".map")
-                                    {
-                                        if (!(/\.(min.js|min.css|min.map)$/i).test(output[0].assets[i].files[k]))
-                                        {
-                                            data_out[u] = [
-                                                file_type[0].substring(1),
-                                                url + library + "/" + last + "/" + output[0].assets[i].files[k]
-                                            ];
-
-                                            u++;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        data_out[u] = [
-                                            file_type[0].substring(1),
-                                            url + library + "/" + last + "/" + output[0].assets[i].files[k]
-                                        ];
-
-                                        u++;
-                                    }
-                                }
-                                else
-                                {
-                                    data_out[u] = [
-                                        file_type[0].substring(1),
-                                        url + library + "/" + last + "/" + output[0].assets[i].files[k]
-                                    ];
-
-                                    u++;
-                                }
-
-                                file_type = null;
-                                file_test_min = false;
-
                             }
-                        }
 
+                        }
                     }
+
 
                     if (data_out != null)
                         res.status(200).send({"error" : false, "data" : data_out });

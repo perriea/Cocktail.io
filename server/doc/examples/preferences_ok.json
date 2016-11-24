@@ -1,0 +1,17 @@
+{
+  "error" : true,
+  "data" : [
+    {
+      "user_id": 2,
+      "page": "password",
+      "options": [
+        {
+          "count": 20,
+          "numbers": true,
+          "symbols": false,
+          "uppercase": true
+        }
+      ]
+    }
+  ]
+}

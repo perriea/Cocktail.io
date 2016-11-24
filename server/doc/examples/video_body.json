@@ -1,0 +1,9 @@
+{
+  "src": "http://monsite.com/mavideo.mp4",
+  "width": 400,
+  "heigth": 500,
+  "muted": false,
+  "autoplay": true,
+  "loop": false,
+  "controls": false
+}

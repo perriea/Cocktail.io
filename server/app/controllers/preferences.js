@@ -13,7 +13,7 @@ module.exports = {
         {
             res.status(200).json({"error" : true, "data" : pref, "message" : null });
         }).catch(function(e) {
-            res.status(500).json({"error" : true, "data" : [], "message" : "Erreur dans la recherche des préférences." });
+            res.status(400).json({"error" : true, "data" : [], "message" : "Erreur dans la recherche des préférences." });
         });
     },
 
@@ -51,6 +51,6 @@ module.exports = {
             });
         }
         else
-            res.status(500).json({"error" : true, "data" : [], "message" : "Pas d'options" });
+            res.status(400).json({"error" : true, "data" : [], "message" : "Pas d'options" });
     }
 };

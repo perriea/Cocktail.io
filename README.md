@@ -60,20 +60,20 @@ module.exports = db;
 - Démarrer MySQL puis lancer le serveur avec la commande ` npm start `
 
 
-## APIDocJS
+## RAML - 
 
 ### Installation
 
 Dans le terminal ou le cmd :
 ```
-npm install apidoc -g
+npm install raml2html -g
 ```
 
 ### Execution
 
-A la racine du projet :
+Dans le dossier `/server/doc/`
 ```
-apidoc -i ./ -o docs/ -f ".*\\.js$"
+raml2html api.raml > index.html
 ```
 
-Cela créera un dossier ` docs `, ouvrez le puis affichez ` index.html ` sur n'importe quel navigateur Web.
+Cela créera un ficher ` index.html `, ouvrez le pour l'afficher sur n'importe quel navigateur Web.

@@ -1,0 +1,35 @@
+{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "src": {
+      "required": false,
+      "type": "string"
+    },
+    "width": {
+      "required": true,
+      "type": "number"
+    },
+    "heigth": {
+      "required": true,
+      "type": "number"
+    },
+    "muted": {
+      "required": false,
+      "type": "boolean"
+    },
+    "autoplay": {
+      "required": false,
+      "type": "boolean"
+    },
+    "loop": {
+      "required": false,
+      "type": "boolean"
+    },
+    "controls": {
+      "required": false,
+      "type": "boolean"
+    }
+  }
+}

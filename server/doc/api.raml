@@ -1,0 +1,233 @@
+#%RAML 0.8
+title: Cocktail.io
+version: v1
+baseUri: https://api.cocktail.io
+schemas:
+  - lorem_ok: !include schemas/lorem_ok.json
+  - error400: !include schemas/error400.json
+  - password_ok: !include schemas/password_ok.json
+  - username_ok: !include schemas/username_ok.json
+  - video_body: !include schemas/video_body.json
+  - video_ok: !include schemas/video_ok.json
+  - shapes_ok: !include schemas/shapes_ok.json
+  - preferences_ok: !include schemas/preferences_ok.json
+  - preferences_post_ok: !include schemas/preferences_post_ok.json
+  - preferences_post_created: !include schemas/preferences_post_created.json
+  - preferences_post_body: !include schemas/preferences_post_body.json
+  - template_search_ok: !include schemas/template_search_ok.json
+/generate:
+  /lorem:
+    get:
+      description: Génération de paragraphes de Lorem Ipsum
+      queryParameters:
+        count:
+          example: 1
+          default: null
+          description: Nombre de mots à générer.
+          type: integer
+          maximum: 25000
+          minimum: 1
+        paragraphs:
+          example: 2
+          default: 1
+          description: Nombre de paragraphes à générer.
+          type: integer
+          maximum: 25
+          minimum: 1
+      responses:
+        200:
+          description: Lorem générés !
+          body:
+            application/json:
+              schema: lorem_ok
+              example: !include ./examples/lorem_ok.json
+        400:
+          description: Manque d'un paramètre
+          body:
+            application/json:
+              schema: error400
+              example: !include ./examples/error400.json
+  /password:
+    get:
+      description: Génération de mots de passe
+      queryParameters:
+        count:
+          example: 1
+          default: 0
+          description: Nombre de caractères dans le mots de passe.
+          type: integer
+          maximum: 200
+          minimum: 1
+          required: true
+        numbers:
+          type: boolean
+          description: Ajouter des nombres ou non dans le mot de passe.
+          default: false
+          example: true
+          required: false
+        symbols:
+          default: false
+          example: true
+          required: false
+          description: Ajouter des symboles ou non dans le mot de passe.
+          type: boolean
+        uppercase:
+          type: boolean
+          description: Ajouter des majuscules ou non dans le mot de passe.
+          default: false
+          example: true
+          required: false
+      responses:
+        200:
+          description: Mot de passe généré !
+          body:
+            application/json:
+              schema: password_ok
+              example: !include ./examples/password_ok.json
+        400:
+          description: Manque d'un paramètre
+          body:
+            application/json:
+              schema: error400
+              example: !include ./examples/error400.json
+  /username:
+    get:
+      description: Génération de noms d'utilisateurs
+      queryParameters:
+        count:
+          example: 1
+          default: null
+          description: Nombre de nom d'utilisateurs à générer.
+          type: integer
+          maximum: 100
+          minimum: 1
+      responses:
+        200:
+          description: Nom d'utilisateurs générés !
+          body:
+            application/json:
+              schema: lorem_ok
+              example: !include ./examples/username_ok.json
+        400:
+          description: Manque d'un paramètre (ou dépassant les limites autorisées) !
+          body:
+            application/json:
+              schema: error400
+              example: !include ./examples/error400.json
+  /video:
+    post:
+      description: Génération d'une balise HTML vidéo
+      body:
+        application/json:
+          schema: video_body
+          example: !include ./examples/video_body.json
+      responses:
+        200:
+          description: Balise vidéo générée !
+          body:
+            application/json:
+              schema: video_body
+              example: !include ./examples/video_ok.json
+        400:
+          description: Manque d'un paramètre (ou dépassant les limites autorisées) !
+          body:
+            application/json:
+              schema: error400
+              example: !include ./examples/error400.json
+  /shapes:
+    get:
+      description: Génération de formes
+      queryParameters:
+        q:
+          default: null
+          example: square
+          description: Nom de la forme à afficher
+          type: string
+      responses:
+        200:
+          description: Code de la forme généré !
+          body:
+            application/json:
+              example: shapes_ok
+              schema: !include ./examples/shapes_ok.json
+        400:
+          description: Manque d'un paramètre (ou dépassant les limites autorisées) !
+          body:
+            application/json:
+              schema: !include ./examples/error400.json
+              example: error400
+/preferences:
+  get:
+    description: Lecture des préférences par page.
+    queryParameters:
+      page:
+        default: null
+        example: shapes
+        description: Récupération des paramètre de la pages.
+    responses:
+      200:
+        description: Lecture des paramètres de la page.
+        body:
+          application/json:
+            schema: preferences_ok
+            example: !include ./examples/preferences_ok.json
+      400:
+        description: Il manque un paramètre obligatoire.
+        body:
+          application/json:
+            schema: error400
+            example: !include ./examples/error400.json
+  post:
+    description: Enregistrement des préférences par page.
+    responses:
+      200:
+        description: Enregistement modifié !
+        body:
+          application/json:
+            schema: preferences_post_ok
+            example: !include ./examples/preferences_post_ok.json
+      201:
+        description: Enregistrement crée !
+        body:
+          application/json:
+            schema: preferences_post_created
+            example: !include ./examples/preferences_post_created.json
+      400:
+        description: Il manque un paramètre obligatoire !
+        body:
+          application/json:
+            schema: error400
+            example: !include ./examples/error400.json
+    body:
+      application/json:
+        schema: preferences_post_body
+        example: !include ./examples/preferences_post_body.json
+/template:
+  /search:
+    get:
+      description: Recherche de librairies (api.jsdelivr.com).
+      queryParameters:
+        library:
+          default: null
+          example: jquery
+          description: Chercher une librairie JS ou CSS
+          type: string
+        version:
+          type: string
+          description: Numero de version de la Lib
+          default: null
+          example: 3.0.0
+          required: false
+        min:
+          required: false
+          default: null
+          example: true
+          description: Rechercher une librairie en version minimisée.
+          type: boolean
+      responses:
+        200:
+          description: Librairie trouvée.
+          body:
+            application/json:
+              schema: template_search_ok
+              example: !include ./examples/template_search_ok.json

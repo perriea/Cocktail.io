@@ -1,0 +1,665 @@
+<!DOCTYPE HTML><html><head><title>Cocktail.io API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 3.0.1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Cocktail.io API documentation <small>version v1</small></h1><p>https://api.cocktail.io</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="generate" class="panel-title">/generate</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_generate_lorem"><span class="parent">/generate</span>/lorem</a> <span class="methods"><a href="#generate_lorem_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_generate_lorem" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#generate_lorem_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Génération de paragraphes de Lorem Ipsum</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="generate_lorem_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/generate</span>/lorem</h4></div><div class="modal-body"><div class="alert alert-info"><p>Génération de paragraphes de Lorem Ipsum</p></div><ul class="nav nav-tabs"><li class="active"><a href="#generate_lorem_get_request" data-toggle="tab">Request</a></li><li><a href="#generate_lorem_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="generate_lorem_get_request"><h3>Query Parameters</h3><ul><li><strong>count</strong>: <em>(integer - minimum: 1 - maximum: 25000)</em><p>Nombre de mots à générer.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li><li><strong>paragraphs</strong>: <em>(integer - default: 1 - minimum: 1 - maximum: 25)</em><p>Nombre de paragraphes à générer.</p><p><strong>Example</strong>:</p><pre><code>2</code></pre></li></ul></div><div class="tab-pane" id="generate_lorem_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Lorem générés !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": "&lt;p&gt;enim tempor quis deserunt eiusmod id esse duis velit culpa&lt;/p&gt;&lt;p&gt;sit voluptate qui minim incididunt id magna elit exercitation fugiat&lt;/p&gt;"
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Manque d&#39;un paramètre</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_generate_password"><span class="parent">/generate</span>/password</a> <span class="methods"><a href="#generate_password_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_generate_password" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#generate_password_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Génération de mots de passe</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="generate_password_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/generate</span>/password</h4></div><div class="modal-body"><div class="alert alert-info"><p>Génération de mots de passe</p></div><ul class="nav nav-tabs"><li class="active"><a href="#generate_password_get_request" data-toggle="tab">Request</a></li><li><a href="#generate_password_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="generate_password_get_request"><h3>Query Parameters</h3><ul><li><strong>count</strong>: <em>required (integer - default: 0 - minimum: 1 - maximum: 200)</em><p>Nombre de caractères dans le mots de passe.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li><li><strong>numbers</strong>: <em>(boolean - default: false)</em><p>Ajouter des nombres ou non dans le mot de passe.</p><p><strong>Example</strong>:</p><pre><code>true</code></pre></li><li><strong>symbols</strong>: <em>(boolean - default: false)</em><p>Ajouter des symboles ou non dans le mot de passe.</p><p><strong>Example</strong>:</p><pre><code>true</code></pre></li><li><strong>uppercase</strong>: <em>(boolean - default: false)</em><p>Ajouter des majuscules ou non dans le mot de passe.</p><p><strong>Example</strong>:</p><pre><code>true</code></pre></li></ul></div><div class="tab-pane" id="generate_password_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Mot de passe généré !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": "x67tpjpuyghqub3vaj9j"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Manque d&#39;un paramètre</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_generate_username"><span class="parent">/generate</span>/username</a> <span class="methods"><a href="#generate_username_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_generate_username" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#generate_username_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Génération de noms d&#39;utilisateurs</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="generate_username_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/generate</span>/username</h4></div><div class="modal-body"><div class="alert alert-info"><p>Génération de noms d&#39;utilisateurs</p></div><ul class="nav nav-tabs"><li class="active"><a href="#generate_username_get_request" data-toggle="tab">Request</a></li><li><a href="#generate_username_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="generate_username_get_request"><h3>Query Parameters</h3><ul><li><strong>count</strong>: <em>(integer - minimum: 1 - maximum: 100)</em><p>Nombre de nom d&#39;utilisateurs à générer.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li></ul></div><div class="tab-pane" id="generate_username_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Nom d&#39;utilisateurs générés !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": [
+    "Linenfox",
+    "Riverlynx",
+    "Keenterrier",
+    "Shallowbolt",
+    "Watertiger"
+  ]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Manque d&#39;un paramètre (ou dépassant les limites autorisées) !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_generate_video"><span class="parent">/generate</span>/video</a> <span class="methods"><a href="#generate_video_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_generate_video" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#generate_video_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Génération d&#39;une balise HTML vidéo</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="generate_video_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/generate</span>/video</h4></div><div class="modal-body"><div class="alert alert-info"><p>Génération d&#39;une balise HTML vidéo</p></div><ul class="nav nav-tabs"><li class="active"><a href="#generate_video_post_request" data-toggle="tab">Request</a></li><li><a href="#generate_video_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="generate_video_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "src": {
+      "required": false,
+      "type": "string"
+    },
+    "width": {
+      "required": true,
+      "type": "number"
+    },
+    "heigth": {
+      "required": true,
+      "type": "number"
+    },
+    "muted": {
+      "required": false,
+      "type": "boolean"
+    },
+    "autoplay": {
+      "required": false,
+      "type": "boolean"
+    },
+    "loop": {
+      "required": false,
+      "type": "boolean"
+    },
+    "controls": {
+      "required": false,
+      "type": "boolean"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "src": "http://monsite.com/mavideo.mp4",
+  "width": 400,
+  "heigth": 500,
+  "muted": false,
+  "autoplay": true,
+  "loop": false,
+  "controls": false
+}
+</code></pre></div><div class="tab-pane" id="generate_video_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Balise vidéo générée !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "src": {
+      "required": false,
+      "type": "string"
+    },
+    "width": {
+      "required": true,
+      "type": "number"
+    },
+    "heigth": {
+      "required": true,
+      "type": "number"
+    },
+    "muted": {
+      "required": false,
+      "type": "boolean"
+    },
+    "autoplay": {
+      "required": false,
+      "type": "boolean"
+    },
+    "loop": {
+      "required": false,
+      "type": "boolean"
+    },
+    "controls": {
+      "required": false,
+      "type": "boolean"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": "&lt;video src=&#39;http://monsite.com/mavideo.mp4&#39; width=&#39;100&#39; height=&#39;100&#39;&gt;"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Manque d&#39;un paramètre (ou dépassant les limites autorisées) !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_generate_shapes"><span class="parent">/generate</span>/shapes</a> <span class="methods"><a href="#generate_shapes_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_generate_shapes" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#generate_shapes_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Génération de formes</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="generate_shapes_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/generate</span>/shapes</h4></div><div class="modal-body"><div class="alert alert-info"><p>Génération de formes</p></div><ul class="nav nav-tabs"><li class="active"><a href="#generate_shapes_get_request" data-toggle="tab">Request</a></li><li><a href="#generate_shapes_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="generate_shapes_get_request"><h3>Query Parameters</h3><ul><li><strong>q</strong>: <em>(string)</em><p>Nom de la forme à afficher</p><p><strong>Example</strong>:</p><pre>square</pre></li></ul></div><div class="tab-pane" id="generate_shapes_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Code de la forme généré !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "error": false,
+  "data": "&lt;style&gt;#square { width: 100px; height: 100px; background: red; }&lt;/style&gt;&lt;div id=&#39;square&#39;&gt;&lt;/div&gt;"
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>shapes_ok</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Manque d&#39;un paramètre (ou dépassant les limites autorisées) !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>error400</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="preferences" class="panel-title">/preferences</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_preferences"><span class="parent"></span>/preferences</a> <span class="methods"><a href="#preferences_get"><span class="badge badge_get">get</span></a> <a href="#preferences_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_preferences" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#preferences_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Lecture des préférences par page.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#preferences_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Enregistrement des préférences par page.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="preferences_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/preferences</h4></div><div class="modal-body"><div class="alert alert-info"><p>Lecture des préférences par page.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#preferences_get_request" data-toggle="tab">Request</a></li><li><a href="#preferences_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="preferences_get_request"><h3>Query Parameters</h3><ul><li><strong>page</strong>: <em>(string)</em><p>Récupération des paramètre de la pages.</p><p><strong>Example</strong>:</p><pre>shapes</pre></li></ul></div><div class="tab-pane" id="preferences_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Lecture des paramètres de la page.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "required": false,
+              "type": "number"
+            },
+            "page": {
+              "required": false,
+              "type": "string"
+            },
+            "options": {
+              "required": false,
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "required": false,
+                      "type": "number"
+                    },
+                    "numbers": {
+                      "required": false,
+                      "type": "boolean"
+                    },
+                    "symbols": {
+                      "required": false,
+                      "type": "boolean"
+                    },
+                    "uppercase": {
+                      "required": false,
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error" : true,
+  "data" : [
+    {
+      "user_id": 2,
+      "page": "password",
+      "options": [
+        {
+          "count": 20,
+          "numbers": true,
+          "symbols": false,
+          "uppercase": true
+        }
+      ]
+    }
+  ]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Il manque un paramètre obligatoire.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="preferences_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/preferences</h4></div><div class="modal-body"><div class="alert alert-info"><p>Enregistrement des préférences par page.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#preferences_post_request" data-toggle="tab">Request</a></li><li><a href="#preferences_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="preferences_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "page": {
+      "required": false,
+      "type": "string"
+    },
+    "options": {
+      "required": false,
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "count": {
+              "required": false,
+              "type": "number"
+            },
+            "numbers": {
+              "required": false,
+              "type": "boolean"
+            },
+            "symbols": {
+              "required": false,
+              "type": "boolean"
+            },
+            "uppercase": {
+              "required": false,
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "page" : "password",
+  "options": [
+    {
+      "count": 20,
+      "numbers": true,
+      "symbols": false,
+      "uppercase": false
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="preferences_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Enregistement modifié !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error" : false,
+  "data" : [],
+  "message" : "Modifié !"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><p>Enregistrement crée !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    },
+    "message": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error" : false,
+  "data" : [],
+  "message" : "Préference sauvegardé !"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Il manque un paramètre obligatoire !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="template" class="panel-title">/template</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_template_search"><span class="parent">/template</span>/search</a> <span class="methods"><a href="#template_search_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_template_search" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#template_search_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Recherche de librairies (api.jsdelivr.com).</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="template_search_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/template</span>/search</h4></div><div class="modal-body"><div class="alert alert-info"><p>Recherche de librairies (api.jsdelivr.com).</p></div><ul class="nav nav-tabs"><li class="active"><a href="#template_search_get_request" data-toggle="tab">Request</a></li><li><a href="#template_search_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="template_search_get_request"><h3>Query Parameters</h3><ul><li><strong>library</strong>: <em>(string)</em><p>Chercher une librairie JS ou CSS</p><p><strong>Example</strong>:</p><pre>jquery</pre></li><li><strong>version</strong>: <em>(string)</em><p>Numero de version de la Lib</p><p><strong>Example</strong>:</p><pre>3.0.0</pre></li><li><strong>min</strong>: <em>(boolean)</em><p>Rechercher une librairie en version minimisée.</p><p><strong>Example</strong>:</p><pre><code>true</code></pre></li></ul></div><div class="tab-pane" id="template_search_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Librairie trouvée.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        {
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error":false,
+  "data":[
+    [
+      "css",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap-theme.min.css"
+    ],
+    [
+      "css",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css"
+    ],
+    [
+      "eot",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot"
+    ],
+    [
+      "svg",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.svg"
+    ],
+    [
+      "ttf",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf"
+    ],
+    [
+      "woff",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff"
+    ],
+    [
+      "js",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/js/bootstrap.min.js"
+    ]
+  ]
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#generate">/generate</a></li><li><a href="#preferences">/preferences</a></li><li><a href="#template">/template</a></li></ul></div></div></div></div></body></html>
