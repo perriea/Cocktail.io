@@ -8,8 +8,8 @@ var Pref = access.define('c_preferences', {
         type: access.Sequelize.INTEGER(5),
         allowNull: false
     },
-    page: {
-        type: access.Sequelize.STRING(50),
+    page_id: {
+        type: access.Sequelize.INTEGER(5),
         allowNull: false
     },
     options: {
