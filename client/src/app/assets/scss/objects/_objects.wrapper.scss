@@ -1,0 +1,141 @@
+body{
+	background-color: $colorWhiteSmoke;
+	font-family     : "Open Sans";
+	height          : initial;
+}
+
+
+a{
+	color          :black;
+	text-decoration: none;
+}
+
+
+main{
+	padding  : 70px 70px 70px 70px;
+	font-size: 17px;
+	&.skin-content{
+		color 		: $colorPortage;
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorPortage;
+				&:hover{
+					background-color: $colorPortage;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color:colorPortage;
+			}
+		}
+	}
+	&.skin-account{
+		color:$colorCarrotOrange;
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorCarrotOrange;
+				&:hover{
+					background-color: $colorCarrotOrange;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorCarrotOrange;
+			}
+		}
+
+	}
+	&.skin-html{
+		color:$colorFrenchRose;
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorFrenchRose;
+				&:hover{
+					background-color: $colorFrenchRose;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorFrenchRose;
+			}
+		}
+	}
+	&.skin-databases{
+		color:$colorCarrabean;
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorCarrabean;
+				&:hover{
+					background-color: $colorCarrabean;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorCarrabean;
+			}
+		}
+	}
+	&.skin-css{
+		color:$colorEnergy;
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorEnergy;
+				&:hover{
+					background-color: $colorEnergy;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorEnergy;
+			}
+		}
+	}
+	&.skin-back{
+		color:$colorCornFlower;
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorCornFlower;
+				&:hover{
+					background-color: $colorCornFlower;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorCornFlower;
+			}
+		}
+	}
+
+	.category{
+		display         :inline-block;
+		width           :25%;
+		max-width       : 200px;
+		height          :100px;
+		margin          :0 0 10px 0;
+		padding         :0 0 0 0;
+		background-color:yellow;
+		&:nth-child(2),
+		&:nth-child(5){
+			background:green;
+			margin    :0 12.5% 0 12.5%;
+		}
+	}
+}
