@@ -47,21 +47,50 @@ module.exports = function(app, passport, middleware) {
     // =====================================
     // LOGIN ===============================
     // =====================================
-    app.post('/api/auth/login', passport.authenticate('local-login', {
+    /*app.post('/api/auth/login', passport.authenticate('local-login', {
         successRedirect : '/profile', 
         failureRedirect : '/login',
         failureFlash : true
-    }));
+    }));*/
+    app.post('/api/auth/login', function(req, res, next) {
+        console.log(req.session);
+        passport.authenticate('local-login', function(err, user, info)
+        {
+            if (err)
+                return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
+            if (user)
+            {
+                req.session.email = info.user;
+                //console.log(info.user);
+                return res.status(200).json({ error: false, message: info.message });
+            }
+            req.logIn(user, function(err) {
+                if (err)
+                    return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
+                return res.status(500).json({ error: true, message: info.message });
+            });
+        })(req, res, next);
+    });
 
 
     // =====================================
     // SIGNUP ==============================
     // =====================================
-    app.post('/api/auth/signup', passport.authenticate('local-signup', {
-        successRedirect : '/profile', 
-        failureRedirect : '/signup',
-        failureFlash : true
-    }));
+    app.post('/api/auth/signup', function(req, res, next) {
+        passport.authenticate('local-signup', function(err, user, info)
+        {
+            if (err)
+                return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
+            if (!user)
+                return res.status(201).json({ error: false, message: info.message });
+            req.logIn(user, function(err) {
+                if (err)
+                    return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
+                return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
+            });
+        })(req, res, next);
+    });
+
 
 
     // =====================================
@@ -93,13 +122,9 @@ module.exports = function(app, passport, middleware) {
     // =====================================
     app.get('/api/auth/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.status(200).json({ error: false, message: "Session terminée !" });
     });
 
-
-    app.get('/api/admin', Middleware.isAdminIn, function(req, res) {
-        res.json({"error" : false, "session" : req.session.passport });
-    });
 
 
     // All routes not found => 404
