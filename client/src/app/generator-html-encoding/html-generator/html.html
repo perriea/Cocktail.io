@@ -2,17 +2,42 @@
     <div class="content parameters">
         <h3>paramètres</h3>
         <form>
-
-
-            <label class="label">Nombre de caractères
-                <input ng-model="vm.caracters" type="number" name="caracters" class="input-text">
+            <h4>CDN JS</h4>
+            <label><input type="checkbox" name="jquery" id="jquery" />jQuery</label>
+            <label>Version
+            <select name="version" id="version">
+                    <option value="char">jQuery 3.1</option>
+                    <option value="int">jQuery 3.0</option>
+                    <option value="boolean">jQuery 2.2</option>
+                    <option value="decimal">jQuery 2.1</option>
+                    <option value="decimal">jQuery 2.0</option>
+                </select>
             </label>
-
-            <label class="label">Nombre de paragraphes
-                <input ng-model="vm.paragraphs" type="number" name="caracters" class="input-text">
+            <label for="min"><input type="radio" name="min" value="min" id="min" />Version minifiée</label>
+            <br>
+            <label><input type="checkbox" name="jquery" id="jquery" />AngularJS</label>
+            <label>Version
+            <select name="version" id="version">
+                    <option value="char">Angular 2.0</option>
+                    <option value="int">Angular 1.6</option>
+                    <option value="boolean">Angular 1.5.8</option>
+                    <option value="decimal">Angular 1.5.7</option>
+                    <option value="decimal">Angular 1.4.9</option>
+                </select>
             </label>
+            <label for="min"><input type="radio" name="min" value="min" id="min" />Version minifiée</label>
 
-            <input ng-click="vm.sendRequest()" type="submit" value="Générer" class="submit">
+            <h4>CDN CSS</h4>
+            <label><input type="checkbox" name="jquery" id="jquery" />Bootstrap</label>
+            <label>Version
+            <select name="version" id="version">
+                    <option value="char">Bootstrap 3.3.7</option>
+                    <option value="int">Bootstrap 3.3.6</option>
+                    <option value="boolean">Bootstrap 3.3.5</option>
+                    <option value="decimal">Bootstrap 3.3.4</option>
+                    <option value="decimal">Bootstrap 3.3.2</option>
+                </select>
+            </label>
         </form>
     </div>
 
