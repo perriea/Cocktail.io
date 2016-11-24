@@ -1,0 +1,37 @@
+<section class="content-subcategory">
+    <div class="content parameters">
+        <h3>paramètres</h3>
+        <form>
+
+            <label class="label"> Hauteur
+                <input ng-model="vm.height" type="number" name="caracters" class="input-text">
+            </label>
+
+            <label class="label"> Largeur
+                <input ng-model="vm.width" type="number" name="caracters" class="input-text">
+            </label>
+
+            <label class="label"> Auto
+                <input ng-model="vm.autoplay" type="checkbox" name="caracters" class="input-checkbox">
+            </label>
+
+            <label class="label"> En boucle
+                <input ng-model="vm.loop" type="checkbox" name="caracters" class="input-checkbox">
+            </label>
+
+            <label class="label"> Controlles
+                <input ng-model="vm.controls" type="checkbox" name="caracters" class="input-checkbox">
+            </label>
+
+            <label class="label"> Mute
+                <input ng-model="vm.muted" type="checkbox" name="caracters" class="input-checkbox">
+            </label>
+
+            <input ng-click="vm.sendRequest()" type="submit" value="Générer" class="submit">
+        </form>
+    </div>
+
+    <div class="content result">
+        <h3>résultats</h3>
+    </div>
+</section>

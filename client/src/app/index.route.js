@@ -71,7 +71,23 @@
         templateUrl: 'app/generator-shape-gradient/generator.html',
         controller: 'GeneratorShapeGradientController',
         controllerAs: 'generator'
-      })    
+      })
+
+      /*
+      ** Generator shape and Gradient
+      */
+      .state('generator-html', {
+        url: '/generator/html',
+        templateUrl: 'app/generator-html-encoding/generator.html',
+        controller: 'HtmlEncodingController',
+        controllerAs: 'generator'
+      })
+      .state('generator-encoding', {
+        url: '/generator/encoding',
+        templateUrl: 'app/generator-html-encoding/generator.html',
+        controller: 'HtmlEncodingController',
+        controllerAs: 'generator'
+      })      
       ;
 
     $urlRouterProvider.otherwise('/');

@@ -1,0 +1,23 @@
+<section class="content-subcategory">
+    <div class="content parameters">
+        <h3>paramètres</h3>
+        <form>
+
+
+            <label class="label">Nombre de caractères
+                <input ng-model="vm.caracters" type="number" name="caracters" class="input-text">
+            </label>
+
+            <label class="label">Nombre de paragraphes
+                <input ng-model="vm.paragraphs" type="number" name="caracters" class="input-text">
+            </label>
+
+            <input ng-click="vm.sendRequest()" type="submit" value="Générer" class="submit">
+        </form>
+    </div>
+
+    <div class="content result">
+        <h3>résultats</h3>
+        <div ng-bind-html="vm.result" style="font-size: 15px;"></div>
+    </div>
+</section>

@@ -38,6 +38,14 @@
                     count: '@count',
                 }
             },
+            getShapes: {
+                url:     url + '/shapes',
+                method:  'GET',
+                isArray: false,
+                params: {
+                    shapes: '@shapes',
+                }
+            },
             getVideo: {
                 url:     url + '/video',
                 method:  'GET',
