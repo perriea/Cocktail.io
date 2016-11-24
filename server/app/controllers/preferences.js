@@ -21,7 +21,7 @@ module.exports = {
     write: function(req, res)
     {
         var options = req.body.options;
-        var page = req.query.page;
+        var page = req.body.page;
 
         // on verifie si les params obligatoires sont la et rempli
         if (typeof page !== 'undefined' && typeof options !== 'undefined')
