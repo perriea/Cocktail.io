@@ -1,0 +1,28 @@
+<div>
+
+    <header>
+        <my-navbar></my-navbar>
+    </header>
+
+    <main>
+        <section class="select-subcategory">
+            <button
+                ng-class="{subcategory: true}"
+                ng-click="generator.changeState('html')"
+            >
+                html
+            </button>
+            <button
+                ng-class="{subcategory: true}"
+                ng-click="generator.changeState('encoding')"
+            >
+                encoding
+            </button>
+        </section>
+
+        <html-generator  ng-show="generator.type === 'html'"></html-generator>
+        <encoding-generator ng-show="generator.type === 'encoding'"></encoding-generator>
+
+    </main>
+
+</div>
