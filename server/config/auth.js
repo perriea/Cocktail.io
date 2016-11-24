@@ -2,14 +2,14 @@
 
 module.exports = {
     'twitterAuth' : {
-        'consumerKey'       : '',
-        'consumerSecret'    : '',
-        'callbackURL'       : ''
+        'consumerKey'       : 'a',
+        'consumerSecret'    : 'a',
+        'callbackURL'       : 'a'
     },
 
     'googleAuth' : {
-        'clientID'      : '',
-        'clientSecret'  : '',
-        'callbackURL'   : ''
+        'clientID'      : 'a',
+        'clientSecret'  : 'a',
+        'callbackURL'   : 'a'
     }
 };
