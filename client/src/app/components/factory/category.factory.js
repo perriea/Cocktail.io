@@ -26,7 +26,7 @@
                 subtitle:   'HTML',
                 subclass:   'html',
                 text:       'Rien pour l\'instant',
-                link:       '#/generator/password'
+                link:       '#/generator/html'
             },
             {
                 title:      '',
