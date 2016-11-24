@@ -1,0 +1,45 @@
+.label {
+	color: #000000;
+	font-size: 13px;
+	margin-bottom: 20px;
+	line-height: 20px;
+	overflow: auto;
+	display: block;
+	display: inline-block;
+	width: 100%;
+}
+
+.input {
+	float: right;
+	clear: both;
+	display: inline-block;
+}
+
+.input-text {
+	width: 55px;
+	height: 20px;
+	border: 1px solid #9690de;
+	float: right;
+	clear: both;
+}
+
+.submit {
+	width           : 100%;
+padding: 10px 0 10px 0;	
+	border          : 3px solid #9690de;
+	font-weight     : bold;
+	background-color: transparent;
+	text-transform  : uppercase;
+	transition      : all 0.5s ease-in-out;
+	&:hover {
+		background-color: #9690de;
+		color           : #ffffff!important;
+	}
+}
+
+.checkbox {
+	border          : 1px solid #9690de;
+	width           : 17px;
+	height          : 17px;
+	background-color: #ffffff;
+}

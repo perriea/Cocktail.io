@@ -1,0 +1,20 @@
+table{
+	background-color:$colorWhite;
+	width:100%;
+	text-align: center;
+	thead{
+		border-bottom: 5px solid red;
+		th{
+			height:40px;
+			color:$colorFrenchRose;
+			font-weight:bold;
+			letter-spacing: 2px;
+		}
+	}
+	tbody{
+		tr{
+			&:nth-child(even){}
+			&:nth-child(odd){background-color:#f5f5f5;}
+		}
+	}
+}

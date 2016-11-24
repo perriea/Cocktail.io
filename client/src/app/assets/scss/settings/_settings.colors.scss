@@ -1,25 +1,8 @@
-
-/**
- * WHY USING VARIABLES ?
- * 
- * In regular CSS you would have repetition of color code, like "#FFFFFF" would have been wrote plenty of time
- * With those variables, if you decide that "#FFFFFF" must become "#FFFEEE" it will be done by simple changing ONE
- * value and trying to find all of those lines.
- * 
+/*
+ * Naming variable
  *
- * HOW TO USE THE COLOR ?
- *
- * Example : "color : #E32636" become "color : $color-alizarin-crimson" 
- *
- *
- * HOW TO CAME UP WITH A NAME COLOR ?
- *
- * Start by naming the variable "$color-" and add the name that you find on this website:
+ * Start by naming the variable "$color" and add the name (camelCase) that you find here
  * http://www.color-blindness.com/color-name-hue/
- * Or simply use your imagination.
- *
- *
- * CONTROLLING COLORS
  *
  * Examples :
  * - "darken( $base-color, 10% )"
@@ -29,6 +12,7 @@
  *
  *
  */
+
 
 /*==========================================================================
 White

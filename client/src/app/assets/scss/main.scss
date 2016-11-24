@@ -1,24 +1,109 @@
-/* ==========================================================================
-Pour des infos sur la structure :
-http://less.virgile-gouala.fr/
-La documentation n'est pas encore completement traduite, mais toutes
-les sources en bas de la page web.
-========================================================================== */
+ /**
+    *
+    *
+    * SETTINGS
+    *
+    * Fonts................Import every local fonts
+    * Colors...............inuitcss’ core and setup settings.
+    * Global...............Project-wide variables.
+    *
+    *
+    * MIXINS
+    *
+    * Font-size............A mixin which guarantees baseline-friendly line-heights.
+    * Clearfix.............Micro clearfix mixin.
+    * Hidden...............Mixin for hiding elements.
+    *
+    *
+    * ELEMENTS
+    *
+    * Blank................Blank.
+    *
+    *
+    * OBJECTS
+    *
+    * Blank................Blank.
+    *
+    *
+    * COMPONENTS
+    *
+    * Buttons..............Buttons' default appearance.
+    * Headings.............Headings' default appearance.
+    * Images...............Images' default appearance.
+    * Inputs...............Inputs' default appearance.
+    * Links................Links' default appearance.
+    * Lists................Lists' default appearance.
+    * Paragraphs...........Paragraphs' default appearance.
+    *
+    *
+    * HACKS
+    *
+    * Hide.................Helper classes to hide content
+    * Clearfix.............Bind our clearfix onto a utility class.
+    *
+    * Print................Reset-like styles taken from the HTML5 Boilerplate.
+    *
+    */
+
+@charset 'utf-8';
+// ==========================================================================
+// SETTINGS
+// Used with preprocessors and contain font, colors definitions, etc.
+// ==========================================================================
+   @import "settings/settings.fonts" ;
+   @import "settings/settings.colors";
+   @import "settings/settings.global";
 
 
-/*@import "tools.blank.scss";*/
+// ==========================================================================
+// MIXINS
+// Globally used mixins and functions. It’s important not to output any CSS
+// in the first 2 layers
+// ==========================================================================
+   @import "mixins/mixins.font-size";
+   @import "mixins/mixins.clearfix" ;
+   @import "mixins/mixins.hidden"   ;
 
-@import "generic.body.scss";
-@import "generic.header.scss";
 
-@import "block.category.scss";
-@import "block.grid.scss";
+// ==========================================================================
+// ELEMENTS 
+// Styling for bare HTML elements (like H1, A, etc.). These come with default
+// styling from the browser so we can redefine them here.
+// ==========================================================================
+   @import "elements/elements.buttons";
+   @import "elements/elements.headings";
+   @import "elements/elements.images";
+   @import "elements/elements.inputs";
+   @import "elements/elements.links";
+   @import "elements/elements.lists";
+   @import "elements/elements.paragraphes";
+   @import "elements/elements.tables";
 
 
-/*@import "____elements.blank.scss";*/
+// ==========================================================================
+// OBJECTS 
+// Class-based selectors which define undecorated design patterns, for
+// example media object known from OOCSS
+// ==========================================================================
+   @import "objects/objects.blank";
+   @import "objects/objects.wrapper";
+   @import "objects/objects.themes";
 
-/*@import "_____objects.blank.scss"; */
 
-/*@import "______components.blank.scss"; */
- 
-/*@import "_______trumps.blank.scss"; */
+// ==========================================================================
+// COMPONENTS
+// Specific UI components. This is where majority of our work takes place and
+// our UI components are often composed of Objects and Components.
+// ==========================================================================
+   @import "components/components.blank";
+   @import "components/components.header";
+   @import "components/components.grid";
+   @import "components/components.pages";
+
+
+// ==========================================================================
+// HACKS
+// Utilities and helper classes with ability to override anything which goes
+// before in the triangle, eg. hide helper class
+// ==========================================================================
+   @import "hacks/hacks.blank";

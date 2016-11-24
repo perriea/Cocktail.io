@@ -1,0 +1,149 @@
+body main{
+	padding  : 70px 70px 70px 70px;
+	font-size: 17px;
+	&.theme-content{
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorPortage;
+				&:hover, &.active{
+					background-color: $colorPortage;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color:$colorPortage;
+				.submit {
+					border-color : $colorPortage;
+					color : $colorPortage;
+					&:hover {
+						background-color: $colorPortage;
+					}
+				}
+			}
+		}
+	}
+	&.theme-accounts{
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorCarrotOrange;
+				&:hover, &.active{
+					background-color: $colorCarrotOrange;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorCarrotOrange;
+				.submit {
+					border-color : $colorCarrotOrange;
+					color : $colorCarrotOrange;
+					&:hover {
+						background-color: $colorCarrotOrange;
+					}
+				}
+			}
+		}
+
+	}
+	&.theme-html{
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorFrenchRose;
+				&:hover, &.active{
+					background-color: $colorFrenchRose;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorFrenchRose;
+				.submit {
+					border-color : $colorFrenchRose;
+					color : $colorFrenchRose;
+					&:hover {
+						background-color: $colorFrenchRose;
+					}
+				}
+			}
+		}
+	}
+	&.theme-databases{
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorCarrabean;
+				&:hover, &.active{
+					background-color: $colorCarrabean;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorCarrabean;
+				.submit {
+					border-color : $colorCarrabean;
+					color : $colorCarrabean;
+					&:hover {
+						background-color: $colorCarrabean;
+					}
+				}
+			}
+		}
+	}
+	&.theme-css{
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorEnergy;
+				&:hover, &.active{
+					background-color: $colorEnergy;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorEnergy;
+				.submit {
+					border-color : $colorEnergy;
+					color : $colorEnergy;
+					&:hover {
+						background-color: $colorEnergy;
+					}
+				}
+			}
+		}
+	}
+	&.theme-back{
+		// Bouton de navigation des pages modules
+		.select-subcategory{
+			button.subcategory{
+				color: $colorCornFlower;
+				&:hover, &.active{
+					background-color: $colorCornFlower;
+					color: $colorWhite;
+				}
+			}
+		}
+		.content-subcategory{
+			.parameters, .result{
+				border-color: $colorCornFlower;
+				.submit {
+					border-color : $colorCornFlower;
+					color : $colorCornFlower;
+					&:hover {
+						background-color: $colorCornFlower;
+					}
+				}
+			}
+		}
+	}
+}
