@@ -1,0 +1,11 @@
+{
+  "page" : "password",
+  "options": [
+    {
+      "count": 20,
+      "numbers": true,
+      "symbols": false,
+      "uppercase": false
+    }
+  ]
+}

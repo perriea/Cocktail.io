@@ -3,6 +3,7 @@
 // =====================================
 module.exports = {
 
+    // fonction de verification si le user est connecté
     isLoggedIn: function(req, res, next) 
     {
         if (req.isAuthenticated())
@@ -11,6 +12,7 @@ module.exports = {
         res.status(401).send({ error: true, message: "Unauthorized, authentification required" });
     },
 
+    // fonction de verification si le user est connecté + au grade d'Admin
     isAdminIn: function(req, res, next)
     {
         if (req.isAuthenticated()) {

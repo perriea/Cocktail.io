@@ -1,0 +1,33 @@
+{
+  "error":false,
+  "data":[
+    [
+      "css",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap-theme.min.css"
+    ],
+    [
+      "css",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css"
+    ],
+    [
+      "eot",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.eot"
+    ],
+    [
+      "svg",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.svg"
+    ],
+    [
+      "ttf",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf"
+    ],
+    [
+      "woff",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff"
+    ],
+    [
+      "js",
+      "https://cdn.jsdelivr.net/bootstrap/3.1.1/js/bootstrap.min.js"
+    ]
+  ]
+}
