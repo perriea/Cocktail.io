@@ -184,7 +184,49 @@ module.exports = {
                 code = null;
         }
 
-        res.status(200).json({"error" : true, "data" : code });
+        res.status(200).json({"error" : false, "data" : code });
+    },
+
+    // GET /api/generate/gradients
+    gradients: function (req, res) {
+        var orientation = req.query.orientation;
+        var color1 = req.query.color1;
+        var color2 = req.query.color2;
+        var location1 = req.query.location1;
+        var location2 = req.query.location2;
+        var css = null;
+        var params = [];
+
+        if (typeof orientation !== 'undefined' && validator.isInt(orientation, { min: 1, max: 5 }) &&
+            typeof location1 !== 'undefined' && validator.isInt(location1, { min: 0, max: 100 }) &&
+            typeof location2 !== 'undefined' && validator.isInt(location2, { min: 0, max: 100 }) &&
+            typeof color1 !== 'undefined' && validator.isHexColor(color1) &&
+            typeof color2 !== 'undefined' && validator.isHexColor(color2))
+        {
+            switch (orientation)
+            {
+                case 1:
+                    params = ["left", "left", "to right"];
+                    break;
+                case 2:
+                    params = ["top", "top", "to bottom"];
+                    break;
+                case 3:
+                    params = ["-45deg", "-45deg", "135deg"];
+                    break;
+                case 4:
+                    params = ["45deg", "45deg", "45deg"];
+                    break;
+                case 5:
+                    params = ["center, ellipse cover,", "center, ellipse cover,", "ellipse at center"];
+                    break;
+            }
+
+
+            css = "background: #" + color1 + "; /* Old browsers */ background: -moz-linear-gradient(" + params[0] + ", #" + color1 + " " + location1 + "%, #" + color2 + " " + location2 + "%); /* FF3.6-15 */ background: -webkit-linear-gradient(" + params[1] + ", #" + color1 + " " + location1 + "%, #" + color2 + " " + location2 + "%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(" + params[2] + ", " + color1 + " " + location1 + "%, #" + color2 + " " + location2 + "%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#" + color1 + "', endColorstr='#" + color2 + "',GradientType=0 ); /* IE6-9 */";
+        }
+
+        res.status(200).json({"error" : false, "data" : css });
     }
 
 };
