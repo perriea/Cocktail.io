@@ -53,22 +53,20 @@ module.exports = function(app, passport, middleware) {
         failureFlash : true
     }));*/
     app.post('/api/auth/login', function(req, res, next) {
-        console.log(req.session);
         passport.authenticate('local-login', function(err, user, info)
         {
             if (err)
                 return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
             if (user)
             {
-                req.session.email = info.user;
-                //console.log(info.user);
+                req.session.id = user.dataValues.id;
+                req.session.email = user.dataValues.email;
+
                 return res.status(200).json({ error: false, message: info.message });
             }
-            req.logIn(user, function(err) {
-                if (err)
-                    return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
-                return res.status(500).json({ error: true, message: info.message });
-            });
+
+            return res.status(500).json({ error: true, message: info.message });
+
         })(req, res, next);
     });
 
