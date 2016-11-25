@@ -21,12 +21,8 @@
 
     /** @ngInject */
     function GradientController(Generator, ThrowErrorFactory) {
-      var vm         = this;
-/*      vm.loading     = false;
-      vm.autoplay    = false;
-      vm.height      = 400;
-      vm.width       = 400;
-      vm.src         = '';
+      var vm     = this;
+      vm.loading = false;
 
       vm.sendRequest = sendRequest;
 
@@ -36,13 +32,8 @@
         }
         vm.loading = true;
 
-
         Generator
-        .getVideo({
-          autoplay: 'vm.autoplay',
-          height:   'vm.height',
-          width:    'vm.width',
-          src:      'vm.src'
+        .getGradient({
         }).$promise
         .then(callBackSuccess)
         ["catch"](callBackError)
@@ -58,7 +49,7 @@
 
       function callBackFinally () {
         vm.loading = false;
-      }*/
+      }
     }
   }
 

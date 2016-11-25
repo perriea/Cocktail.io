@@ -21,11 +21,8 @@
 
     /** @ngInject */
     function HtmlController(Generator, ThrowErrorFactory) {
-      var vm         = this;
-      vm.loading     = false;
-      vm.caracters   = 30;
-      vm.paragraphs  = 2;
-      vm.result      = '';
+      var vm     = this;
+      vm.loading = false;
 
       vm.sendRequest = sendRequest;
 
@@ -36,9 +33,7 @@
         vm.loading = true;
 
         Generator
-        .getText({
-          count:       vm.caracters,
-          paragraphs:  vm.paragraphs
+        .getHtml({
         }).$promise
         .then(callBackSuccess)
         ["catch"](callBackError)

@@ -21,24 +21,9 @@
 
     /** @ngInject */
     function EncodingController(Generator, $location, ThrowErrorFactory) {
-      var vm      = this;
-      vm.autoplay = false;
-      vm.loop     = false;
-      vm.controls = false;
-      vm.muted    = false;
-      vm.height   = 400;
-      vm.width    = 400;
-      vm.src      = '';
-
-      vm.intern  = false;
+      var vm     = this;
       vm.loading = false;
 
-      vm.intern_src = [
-        { name: "bloub.mp4", path: "/bloub.mp4"},
-        { name: "pouet.mp4", path: "/pouet.mp4"}
-      ];
-
-      vm.setInternVideo = setInternVideo;
       vm.sendRequest    = sendRequest;
 
       function sendRequest() {
@@ -47,26 +32,12 @@
         }
         vm.loading = true;
 
-
         Generator
-        .getVideo({
-          autoplay: vm.autoplay,
-          controls: vm.controls,
-          height:   vm.height,
-          width:    vm.width,
-          loop:     vm.loop,
-          muted:    vm.muted,
-          src:      vm.src
+        .getEncoding({
         }).$promise
         .then(callBackSuccess)
         ["catch"](callBackError)
         ["finally"](callBackFinally);
-      }
-
-      function setInternVideo(link) {
-        vm.intern  = true;
-        vm.display = link.name;
-        vm.src     = link.path;
       }
 
       function callBackSuccess (result) {
