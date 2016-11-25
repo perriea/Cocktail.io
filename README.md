@@ -60,7 +60,7 @@ module.exports = db;
 - Démarrer MySQL puis lancer le serveur avec la commande ` npm start `
 
 
-## RAML - 
+## RAML
 
 ### Installation
 
