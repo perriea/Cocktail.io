@@ -20,41 +20,49 @@
     return directive;
 
     /** @ngInject */
-    function ShapeController(Generator) {
-      var vm         = this;
-/*      vm.loading     = false;
-      vm.autoplay    = false;
-      vm.height      = 400;
-      vm.width       = 400;
-      vm.src         = '';
+    function ShapeController(Generator, $sce) {
+      var vm     = this;
+      vm.loading = false;
+      vm.shapes  = "square";
 
-      vm.sendRequest = sendRequest;
+      vm.sendRequest  = sendRequest;
+      vm.changeShapes = changeShapes;
+      vm.trustMyValue = trustMyValue;
+
+      vm.sendRequest();
+
+      function changeShapes(shape) {
+        if (vm.shapes === shape) {
+          return ;
+        }
+
+        vm.shapes = shape;
+        vm.sendRequest();
+      }
 
       function sendRequest() {
-        if ($scope.loading === true) {
+        if (vm.loading === true) {
           return ;
         }
         vm.loading = true;
 
-
         Generator
-        .getVideo({
-          autoplay: 'vm.autoplay',
-          height:   'vm.height',
-          width:    'vm.width',
-          src:      'vm.src'
+        .getShapes({
+          q: vm.shapes,
         }).$promise
         .then(callBackSuccess)
-        ["catch"](callsBackError)
+        ["catch"](callBackError)
         ["finally"](callBackFinally);
 
-        /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
-        .then(callBackSuccess, callsBackError); */
-        /*
+      }
+
+      function trustMyValue(value) {
+        return $sce.trustAsHtml(value);
       }
 
       function callBackSuccess (result) {
-        vm.result = result;
+        vm.result = result.data;
+        console.log(result.data);
       }
       function callBackError (error) {
         console.log(error);
@@ -62,7 +70,7 @@
 
       function callBackFinally () {
         vm.loading = false;
-      }*/
+      }
     }
   }
 

@@ -2,7 +2,8 @@
     <md-content>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Connexion</h2>
+                <h2 ng-show="vm.type === 1">Connexion</h2>
+                <h2 ng-show="vm.type === 2">Inscription</h2>
                 <span flex></span>
                 <i ng-click="vm.cancel()" class="fa fa-times" aria-hidden="true"></i>
             </div>
@@ -20,7 +21,7 @@
                 <label>Password</label>
                 <input ng-model="vm.password" type="password">
             </md-input-container>
-
+            <md-button class="md-raised md-primary" ng-click="vm.type = 2">Inscription</md-button>
         </div>
 
         <!-- Inscription -->
@@ -28,6 +29,7 @@
             <p>
                 Inscription
             </p>
+            <md-button class="md-raised md-primary" ng-click="vm.type = 1">Connexion</md-button>
         </div>
     </md-content>
 </md-dialog>
