@@ -3,23 +3,24 @@
         <h3>paramètres</h3>
         <form>
 
-            <input type="radio" name="gender" value="square" checked> Carré<br>
-            <input type="radio" name="gender" value="rectangle"> Rectangle<br>
-            <input type="radio" name="gender" value="circle"> Circle<br>
-            <input type="radio" name="gender" value="oval"> Oval<br>
-            <input type="radio" name="gender" value="triangle-up"> Triangle Haut<br>
-            <input type="radio" name="gender" value="triangle-down"> Triangle Bas<br>
-            <input type="radio" name="gender" value="triangle-left"> Triangle Gauche<br>
-            <input type="radio" name="gender" value="triangle-right"> Triangle Droit<br>
-            <input type="radio" name="gender" value="triangle-top-left"> Triangle Haut<br>
-            <input type="radio" name="gender" value="triangle-down"> Triangle Bas<br>
-            <input type="radio" name="gender" value="triangle-left"> Triangle Gauche<br>
-            <input type="radio" name="gender" value="triangle-right"> Triangle Droit<br>
+            <input ng-click="vm.changeShapes('square')" type="radio" name="gender" value="square" checked> Carré<br>
+            <input ng-click="vm.changeShapes('rectangle')" type="radio" name="gender" value="rectangle"> Rectangle<br>
+            <input ng-click="vm.changeShapes('circle')" type="radio" name="gender" value="circle"> Circle<br>
+            <input ng-click="vm.changeShapes('oval')" type="radio" name="gender" value="oval"> Oval<br>
+            <input ng-click="vm.changeShapes('triangle-up')" type="radio" name="gender" value="triangle-up"> Triangle Haut<br>
+            <input ng-click="vm.changeShapes('triangle-down')" type="radio" name="gender" value="triangle-down"> Triangle Bas<br>
+            <input ng-click="vm.changeShapes('triangle-left')" type="radio" name="gender" value="triangle-left"> Triangle Gauche<br>
+            <input ng-click="vm.changeShapes('triangle-right')" type="radio" name="gender" value="triangle-right"> Triangle Droit<br>
+            <input ng-click="vm.changeShapes('triangle-topleft')" type="radio" name="gender" value="triangle-top-left"> Triangle Haut<br>
+            <input ng-click="vm.changeShapes('triangle-topright')" type="radio" name="gender" value="triangle-down"> Triangle Bas<br>
+            <input ng-click="vm.changeShapes('triangle-bottomleft')" type="radio" name="gender" value="triangle-left"> Triangle Gauche<br>
+            <input ng-click="vm.changeShapes('triangle-bottomright')" type="radio" name="gender" value="triangle-right"> Triangle Droit<br>
         </form>
     </div>
 
     <div class="content result">
         <h3>résultats</h3>
-        <div ng-bind-html="vm.result" style="font-size: 15px;"></div>
+        <p ng-bind="vm.result"></p>
+        <div ng-bind-html="vm.trustMyValue(vm.result)" style="font-size: 15px;">bloub</div>
     </div>
 </section>

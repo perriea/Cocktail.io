@@ -99,30 +99,29 @@ module.exports = {
 
     // POST /api/generate/video
     video: function (req, res) {
-        var autoplay = req.body.autoplay;
-        var controls = req.body.controls;
-        var loop = req.body.loop;
-        var muted = req.body.muted;
-        var height = req.body.height;
-        var width = req.body.width;
-        var src = req.body.src;
+        var autoplay      = req.body.autoplay;
+        var controls      = req.body.controls;
+        var loop          = req.body.loop;
+        var muted         = req.body.muted;
+        var height        = req.body.height;
+        var width         = req.body.width;
+        var src           = req.body.src;
         var option_string = "";
-        var html = "";
+        var html          = "";
 
         // on regarde les parametres obligatoires
-        if ((typeof height !== 'undefined' && validator.isInt(height, { min: 1 })) &&
-            (typeof width !== 'undefined' && validator.isInt(width, { min: 1 })) && validator.isURL(src))
+        if (typeof height !== 'undefined'&& typeof width !== 'undefined')
         {
-            if (typeof autoplay !== 'undefined' && autoplay == 'true')
+            if (typeof autoplay !== 'undefined' && autoplay == 1)
                 option_string = option_string + " autoplay";
 
-            if (typeof loop !== 'undefined' && loop == 'true')
+            if (typeof loop !== 'undefined' && loop == 1)
                 option_string = option_string + " loop";
 
-            if (typeof controls !== 'undefined' && controls == 'true')
+            if (typeof controls !== 'undefined' && controls == 1)
                 option_string = option_string + " controls";
 
-            if (typeof muted !== 'undefined' && muted == 'true')
+            if (typeof muted !== 'undefined' && muted == 1)
                 option_string = option_string + " muted";
 
             // par defaut si la chaine est vide

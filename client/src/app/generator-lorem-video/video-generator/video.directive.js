@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function VideoController(Generator, $location) {
+    function VideoController(Generator, $location, $sce) {
       var vm      = this;
       vm.autoplay = false;
       vm.loop     = false;
@@ -40,6 +40,7 @@
 
       vm.setInternVideo = setInternVideo;
       vm.sendRequest    = sendRequest;
+      vm.trustMyValue   = trustMyValue;
 
       function sendRequest() {
         if (vm.loading === true) {
@@ -61,9 +62,10 @@
         .then(callBackSuccess)
         ["catch"](callBackError)
         ["finally"](callBackFinally);
+      }
 
-        /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
-        .then(callBackSuccess, callsBackError); */
+      function trustMyValue(value) {
+        return $sce.trustAsHtml(value);
       }
 
       function setInternVideo(link) {
@@ -73,8 +75,7 @@
       }
 
       function callBackSuccess (result) {
-        vm.result = result;
-        console.log(result);
+        vm.result  = result.data;
       }
       function callBackError (error) {
         console.log(error);

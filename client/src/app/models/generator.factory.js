@@ -43,17 +43,20 @@
                 method:  'GET',
                 isArray: false,
                 params: {
-                    shapes: '@shapes',
+                    q: '@shapes',
                 }
             },
             getVideo: {
                 url:     url + '/video',
-                method:  'GET',
+                method:  'POST',
                 isArray: false,
                 params: {
                     autoplay: '@autoplay',
+                    controls: '@controls',
                     height:   '@height',
+                    muted:    '@muted',
                     width:    '@width',
+                    loop:     '@loop',
                     src:      '@src'
                 }
             }
