@@ -110,7 +110,8 @@ module.exports = {
         var html          = "";
 
         // on regarde les parametres obligatoires
-        if (typeof height !== 'undefined'&& typeof width !== 'undefined')
+        if ((typeof height !== 'undefined' && height > 0) &&
+            (typeof width !== 'undefined' && width > 0))
         {
             if (typeof autoplay !== 'undefined' && autoplay == 1)
                 option_string = option_string + " autoplay";
