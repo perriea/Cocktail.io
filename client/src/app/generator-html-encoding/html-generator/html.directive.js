@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function HtmlController(Generator) {
+    function HtmlController(Generator, ThrowErrorFactory) {
       var vm         = this;
       vm.loading     = false;
       vm.caracters   = 30;
@@ -48,10 +48,9 @@
 
       function callBackSuccess (result) {
         vm.result = result.data;
-        console.log(result);
       }
       function callBackError (error) {
-        console.log(error);
+        ThrowErrorFactory.throwError("Une erreur est survenue lors de la récupération des données");
       }
 
       function callBackFinally () {

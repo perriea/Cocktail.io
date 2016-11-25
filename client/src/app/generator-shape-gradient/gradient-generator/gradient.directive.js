@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function GradientController(Generator) {
+    function GradientController(Generator, ThrowErrorFactory) {
       var vm         = this;
 /*      vm.loading     = false;
       vm.autoplay    = false;
@@ -45,19 +45,15 @@
           src:      'vm.src'
         }).$promise
         .then(callBackSuccess)
-        ["catch"](callsBackError)
+        ["catch"](callBackError)
         ["finally"](callBackFinally);
-
-        /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
-        .then(callBackSuccess, callsBackError); */
-        /*
       }
 
       function callBackSuccess (result) {
         vm.result = result;
       }
       function callBackError (error) {
-        console.log(error);
+        ThrowErrorFactory.throwError("Une erreur est survenue lors de la récupération des données");
       }
 
       function callBackFinally () {

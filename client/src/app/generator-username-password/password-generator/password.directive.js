@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function PasswordController(Generator) {
+    function PasswordController(Generator, ThrowErrorFactory) {
       var vm      = this;
       vm.caracter = 10;
       vm.number   = false;
@@ -51,10 +51,9 @@
 
       function callBackSuccess (result) {
         vm.result = result.data;
-        console.log(result);
       }
       function callBackError (error) {
-        console.log(error);
+        ThrowErrorFactory.throwError("Une erreur est survenue lors de la récupération des données");
       }
 
       function callBackFinally () {
