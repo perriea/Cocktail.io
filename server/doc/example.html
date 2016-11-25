@@ -662,4 +662,86 @@
     ]
   ]
 }
-</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#generate">/generate</a></li><li><a href="#preferences">/preferences</a></li><li><a href="#template">/template</a></li></ul></div></div></div></div></body></html>
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="auth" class="panel-title">/auth</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_auth_local"><span class="parent">/auth</span>/local</a> <span class="methods"><a href="#auth_local_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_auth_local" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#auth_local_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Auth locale.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="auth_local_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/auth</span>/local</h4></div><div class="modal-body"><div class="alert alert-info"><p>Auth locale.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#auth_local_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="auth_local_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Auth réussie.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "message": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "message": "Authentification réussie"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Il manque un paramètre obligatoire !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_auth_signup"><span class="parent">/auth</span>/signup</a> <span class="methods"><a href="#auth_signup_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_auth_signup" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#auth_signup_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Inscription.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="auth_signup_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/auth</span>/signup</h4></div><div class="modal-body"><div class="alert alert-info"><p>Inscription.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#auth_signup_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="auth_signup_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Inscription réussie.</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "message": {
+      "required": false,
+      "type": "string"
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "message": "Authentification réussie"
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><p>Il manque un paramètre obligatoire !</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "error": {
+      "required": false,
+      "type": "boolean"
+    },
+    "data": {
+      "required": false,
+      "type": "array",
+      "items": [
+        null
+      ]
+    }
+  }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "error": false,
+  "data": null
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#generate">/generate</a></li><li><a href="#preferences">/preferences</a></li><li><a href="#template">/template</a></li><li><a href="#auth">/auth</a></li></ul></div></div></div></div></body></html>
