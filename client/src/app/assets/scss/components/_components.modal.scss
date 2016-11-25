@@ -1,0 +1,37 @@
+
+// Overlay
+.md-scroll-mask{
+}
+
+.md-dialog-container  .md-transition-in{
+	min-height : inherit!important;
+	width      : 100%!important; 
+	min-width  : 400px!important;
+	max-width  : 400px!important;
+}
+
+md-input-container{
+	width : 80%;
+}
+
+.md-dialog-container .md-toolbar-tools{
+	background-color : $colorWhite;
+	color            : $colorBlack;
+	text-align       : center;
+	text-transform   : uppercase;
+	border-color     : $colorCarrabean;
+	border-style     : solid;
+	border-width     : 5px 0 0 0;
+}
+
+.md-dialog-container .md-toolbar-tools h2{
+	width : 100%;
+}
+
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused label, md-input-container:not(.md-input-invalid).md-input-focused label{
+	color : $colorCarrabean;
+}
+
+md-input-container.md-default-theme:not(.md-input-invalid).md-input-focused .md-input, md-input-container:not(.md-input-invalid).md-input-focused .md-input{
+	border-color : $colorCarrabean;
+}
