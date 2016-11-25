@@ -9,7 +9,7 @@ module.exports = {
         var page = req.query.page;
 
         // recherche dans la base MySQL de la preference de l'utilisateur
-        MUsers.Pref.find({ where: { user_id: req.user.id, page: page }}).then(function(pref)
+        MUsers.Pref.find({ where: { user_id: req.session.id, page: page }}).then(function(pref)
         {
             res.status(200).json({"error" : true, "data" : pref, "message" : null });
         }).catch(function(e) {
@@ -21,13 +21,13 @@ module.exports = {
     write: function(req, res)
     {
         var options = req.body.options;
-        var page = req.query.page;
+        var page = req.body.page;
 
         // on verifie si les params obligatoires sont la et rempli
         if (typeof page !== 'undefined' && typeof options !== 'undefined')
         {
             // on cherche si la preference n'existe
-            MUsers.Pref.find({ where: { user_id: req.user.id, page: page }}).then(function(pref)
+            MUsers.Pref.find({ where: { user_id: req.session.id, page: page }}).then(function(pref)
             {
                 // on update les preferences preécedement enregistrée
                 pref.update({
@@ -42,7 +42,7 @@ module.exports = {
             }).catch(function(e)
             {
                 // on cree la preference elle n'existe pas
-                MUsers.Pref.create({ user_id: req.user.id, page: page, options: options }).then(function(result)
+                MUsers.Pref.create({ user_id: req.session.id, page: page, options: options }).then(function(result)
                 {
                     res.status(201).json({"error" : false, "data" : [], "message" : "Préference sauvegardé !" });
                 }).catch(function(e) {
