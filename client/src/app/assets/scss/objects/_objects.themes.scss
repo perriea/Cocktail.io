@@ -1,10 +1,11 @@
 body main{
 	padding  : 70px 70px 70px 70px;
 	font-size: 17px;
-
+	background-color: #F2F2F2;
+	overflow: auto;
 
   @include respond-to('large') {
-   padding  : 70px 0 40px 0;
+   padding  : 70px 50px 40px 50px;
   }
 
 	&.theme-content{

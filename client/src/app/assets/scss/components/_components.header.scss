@@ -20,6 +20,7 @@ header{
 		span{
 			font-weight: 100;
 		}
+		a {
 		&:before{
 			content            :" ";
 			display            :block;
@@ -34,7 +35,7 @@ header{
 			left               :0;
 			bottom             :0;
 			margin             :auto 0 auto 0
-;		}
+;		}}
 	}
 	nav{
 		display    : block;
