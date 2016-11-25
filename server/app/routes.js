@@ -11,18 +11,13 @@ var Middleware = require("./middleware");
 module.exports = function(app, passport, middleware) {
 
 	app.get('/api/generate/lorem', Generate.lorem);
-
     app.get('/api/generate/password', Generate.password);
-
     app.get('/api/generate/username', Generate.username);
-
+    app.get('/api/generate/shapes', Generate.shapes);
+    app.get('/api/generate/gradients', Generate.gradients);
+    app.get('/api/template/search', Template.search);
     app.post('/api/generate/video', Generate.video);
 
-    app.get('/api/generate/shapes', Generate.shapes);
-
-    app.get('/api/template/search', Template.search);
-
-    app.get('/api/generate/gradients', Generate.gradients);
 
     // =====================================
     // PROFILE SECTION =====================
@@ -47,11 +42,6 @@ module.exports = function(app, passport, middleware) {
     // =====================================
     // LOGIN ===============================
     // =====================================
-    /*app.post('/api/auth/login', passport.authenticate('local-login', {
-        successRedirect : '/profile', 
-        failureRedirect : '/login',
-        failureFlash : true
-    }));*/
     app.post('/api/auth/login', function(req, res, next) {
         passport.authenticate('local-login', function(err, user, info)
         {
@@ -61,12 +51,10 @@ module.exports = function(app, passport, middleware) {
             {
                 req.session.id = user.dataValues.id;
                 req.session.email = user.dataValues.email;
-
                 return res.status(200).json({ error: false, message: info.message });
             }
 
-            return res.status(500).json({ error: true, message: info.message });
-
+            return res.status(400).json({ error: true, message: info.message });
         })(req, res, next);
     });
 
@@ -79,13 +67,12 @@ module.exports = function(app, passport, middleware) {
         {
             if (err)
                 return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
-            if (!user)
+            if (user)
                 return res.status(201).json({ error: false, message: info.message });
-            req.logIn(user, function(err) {
-                if (err)
-                    return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
-                return res.status(500).json({ error: true, message: "Une erreur est survenue !" });
-            });
+            if (!user && info.message)
+                return res.status(400).json({ error: true, message: info.message });
+            return res.status(400).json({ error: true, message: "Une erreur est survenue !" });
+
         })(req, res, next);
     });
 
