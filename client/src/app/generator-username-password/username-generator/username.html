@@ -12,7 +12,8 @@
 
     <div class="content result">
         <h3>résultats</h3>
-        <div style="font-size: 15px;">
+        <img src="./imgs/copy-paste.png" width="40px" align="right" style="position: absolute; top: 20px; right: 20px;" ngclipboard data-clipboard-target="#username"/>
+        <div id="username" style="font-size: 15px;">
             <p ng-repeat="username in vm.result" ng-bind="::username"></p>
         </div>
 </section>
