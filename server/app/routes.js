@@ -8,8 +8,8 @@ var Template = require("./controllers/template");
 
 var Middleware = require("./middleware");
 
-module.exports = function(app, passport, middleware) {
-
+module.exports = function(app, passport)
+{
 	app.get('/api/generate/lorem', Generate.lorem);
     app.get('/api/generate/password', Generate.password);
     app.get('/api/generate/username', Generate.username);

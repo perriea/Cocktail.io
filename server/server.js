@@ -52,8 +52,7 @@ app.use(flash());
 //app.use(express.static(__dirname + '/public')); 
 
 // routes ==================================================
-var middleware = require('./app/middleware');
-require('./app/routes')(app, passport, middleware);
+require('./app/routes')(app, passport);
 require('./config/passport')(passport);
 
 // start app ===============================================
