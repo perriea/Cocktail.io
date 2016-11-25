@@ -25,15 +25,15 @@
                 title:      '',
                 subtitle:   'HTML',
                 subclass:   'html',
-                text:       'Rien pour l\'instant',
+                text:       'En développement',
                 link:       '#/generator/html'
             },
             {
                 title:      '',
                 subtitle:   'Base de données',
                 subclass:   'databases',
-                text:       'Rien pour l\'instant',
-                link:       '#/generator'
+                text:       'En développement',
+                link:       '#/'
             },
             {
                 title:      '',
@@ -46,8 +46,8 @@
                 title:      '',
                 subtitle:   'Back',
                 subclass:   'back',
-                text:       'Rien pour l\'instant',
-                link:       '#/generator'
+                text:       'En développement',
+                link:       '#/'
             }
         ];
 

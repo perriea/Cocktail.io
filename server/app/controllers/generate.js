@@ -129,7 +129,7 @@ module.exports = {
             if (!src)
                 src = "http://mazwai.com/system/posts/videos/000/000/220/preview_mp4_3/the_valley-graham_uheslki.mp4";
 
-            html = "<video src='" + src + "' width='" + width + "' height='" + height + "'" + option_string + ">";
+            html = "<video style=\"background: black; width: 90%; height: auto; \" src='" + src + "' width='" + width + "' height='" + height + "'" + option_string + ">";
 
             res.status(200).json({"error" : false, "data" : html });
         }
