@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController($mdDialog) {
+    function NavbarController($mdDialog, ThrowErrorFactory) {
       var vm = this;
 
       vm.connection  = connection;
@@ -53,11 +53,10 @@
       }
 
       function callBackSuccess(result) {
-        console.log(result);
       }
 
       function callBackError(result) {
-        console.log(result);
+        ThrowErrorFactory.throwError("Une erreur est survenue lors de la connexion");
       }
     }
   }

@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function VideoController(Generator, $location, $sce) {
+    function VideoController(Generator, $location, $sce, ThrowErrorFactory) {
       var vm      = this;
       vm.autoplay = false;
       vm.loop     = false;
@@ -78,7 +78,7 @@
         vm.result  = result.data;
       }
       function callBackError (error) {
-        console.log(error);
+        ThrowErrorFactory.throwError("Une erreur est survenue lors de la récupération des données");
       }
 
       function callBackFinally () {

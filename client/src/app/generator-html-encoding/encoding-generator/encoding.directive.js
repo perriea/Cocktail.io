@@ -20,7 +20,7 @@
     return directive;
 
     /** @ngInject */
-    function EncodingController(Generator, $location) {
+    function EncodingController(Generator, $location, ThrowErrorFactory) {
       var vm      = this;
       vm.autoplay = false;
       vm.loop     = false;
@@ -61,9 +61,6 @@
         .then(callBackSuccess)
         ["catch"](callBackError)
         ["finally"](callBackFinally);
-
-        /* $http.get("someurl/?caracters#{vm.caracters}&paragraphes=#{vm.paragraphes}")
-        .then(callBackSuccess, callsBackError); */
       }
 
       function setInternVideo(link) {
@@ -74,10 +71,9 @@
 
       function callBackSuccess (result) {
         vm.result = result;
-        console.log(result);
       }
       function callBackError (error) {
-        console.log(error);
+        ThrowErrorFactory.throwError("Une erreur est survenue lors de la récupération des données");
       }
 
       function callBackFinally () {
