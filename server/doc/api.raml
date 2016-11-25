@@ -5,6 +5,7 @@ baseUri: https://api.cocktail.io
 schemas:
   - lorem_ok: !include schemas/lorem_ok.json
   - error400: !include schemas/error400.json
+  - error500: !include schemas/error500.json
   - password_ok: !include schemas/password_ok.json
   - username_ok: !include schemas/username_ok.json
   - video_body: !include schemas/video_body.json
@@ -15,6 +16,7 @@ schemas:
   - preferences_post_created: !include schemas/preferences_post_created.json
   - preferences_post_body: !include schemas/preferences_post_body.json
   - template_search_ok: !include schemas/template_search_ok.json
+  - login_ok: !include schemas/login_ok.json
 /generate:
   /lorem:
     get:
@@ -163,10 +165,10 @@ schemas:
       page:
         default: null
         example: shapes
-        description: Récupération des paramètre de la pages.
+        description: Récupération des paramètre de la page
     responses:
       200:
-        description: Lecture des paramètres de la page.
+        description: Lecture des paramètres de la page
         body:
           application/json:
             schema: preferences_ok
@@ -178,7 +180,7 @@ schemas:
             schema: error400
             example: !include ./examples/error400.json
   post:
-    description: Enregistrement des préférences par page.
+    description: Enregistrement des préférences par page
     responses:
       200:
         description: Enregistement modifié !
@@ -205,7 +207,7 @@ schemas:
 /template:
   /search:
     get:
-      description: Recherche de librairies (api.jsdelivr.com).
+      description: Recherche de librairies (api.jsdelivr.com)
       queryParameters:
         library:
           default: null
@@ -231,3 +233,36 @@ schemas:
             application/json:
               schema: template_search_ok
               example: !include ./examples/template_search_ok.json
+/auth:
+  /local:
+    post:
+      description: Auth locale
+      responses:
+        200:
+          description: Auth réussie
+          body:
+            application/json:
+              schema: login_ok
+              example: !include ./examples/login_ok.json
+        400:
+          description: Il manque un paramètre obligatoire !
+          body:
+            application/json:
+              schema: error400
+              example: !include ./examples/error400.json
+  /signup:
+    post:
+      description: Inscription
+      responses:
+        200:
+          description: Inscription réussie.
+          body:
+            application/json:
+              schema: login_ok
+              example: !include ./examples/login_ok.json
+        400:
+          description: Il manque un paramètre obligatoire ou ne respecte pas les critères !
+          body:
+            application/json:
+              schema: error400
+              example: !include ./examples/error400.json
