@@ -20,6 +20,7 @@ header{
 		span{
 			font-weight: 100;
 		}
+		a {
 		&:before{
 			content            :" ";
 			display            :block;
@@ -33,33 +34,33 @@ header{
 			top                :0;
 			left               :0;
 			bottom             :0;
-			margin             :auto 0 auto 0;
-		}
+			margin             :auto 0 auto 0
+;		}}
 	}
 	nav{
-		display    :block;
-		float      :right;
+		display    : block;
+		float      : right;
 		line-height: 70px;
 		line-height: 35px;
 		ul{
 			
 			list-style: none;
 			li{
-				display:inline-block;
+				display: inline-block;
 				a{
-					color      :lighten( $colorBlack, 50% );
-					font-size  :16px;
+					color      : lighten( $colorBlack, 50% );
+					font-size  : 16px;
 					transition : all 0.8s ease 0s;
 					font-weight: bold;
 					&:hover{
 						color:$colorBlack;
 					}
 					&.highlight{
-						padding     :10px 20px 10px 20px;
-						border-width:2px;
-						border-color:lighten( $colorBlack, 50% );
-						border-style:solid;
-						margin      :0 20px 0 0;
+						padding     : 10px 20px 10px 20px;
+						border-width: 2px
+;						border-color: lighten( $colorBlack, 50% );
+						border-style: solid;
+						margin      : 0 20px 0 0;
 						&:hover{
 							border-color:$colorBlack;
 						}
